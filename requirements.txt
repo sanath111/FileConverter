@@ -98,7 +98,7 @@ nbformat==4.4.0
 ndg-httpsclient==0.4.2
 netifaces==0.10.7
 netlink==1.0
-notebook==5.7.0
+notebook==5.7.8
 nototools==0.0.1
 numpy==1.14.5
 olefile==0.46
