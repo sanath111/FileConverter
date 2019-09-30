@@ -10,9 +10,9 @@ import argparse
 import glob
 import os
 import sys
-import setproctitle
 import re
 import pexpect
+import setproctitle
 
 from PyQt5.QtWidgets import QApplication, QFileSystemModel, QListWidgetItem
 from PyQt5 import QtCore, uic, QtGui, QtWidgets
