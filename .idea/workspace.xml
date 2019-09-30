@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5319dda6-a699-4894-8990-3974c98c901e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/pythonpackage.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/pythonpackage.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,13 +43,13 @@
         <counts>
           <entry key="py" value="7077" />
           <entry key="qss" value="110" />
-          <entry key="txt" value="17" />
+          <entry key="txt" value="22" />
           <entry key="yml" value="28" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="127" />
+          <entry key="PLAIN_TEXT" value="132" />
           <entry key="Python" value="7077" />
           <entry key="YAML" value="28" />
         </counts>
@@ -104,16 +103,16 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/requirements.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+            <state relative-caret-position="51">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.github/workflows/pythonpackage.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="544">
@@ -193,13 +192,13 @@
         <option value="$PROJECT_DIR$/styleSheet/stylesheetTest.qss" />
         <option value="$PROJECT_DIR$/src/convert_png_mov_rle.py" />
         <option value="$PROJECT_DIR$/src/convert_exr_mov_rle.py" />
-        <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/src/file_converter.py" />
         <option value="$PROJECT_DIR$/.github/workflows/pythonpackage.yml" />
+        <option value="$PROJECT_DIR$/requirements.txt" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1919" />
     <option name="width" value="1922" />
     <option name="height" value="1050" />
@@ -621,6 +620,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.github/workflows/pythonpackage.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="36" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/file_converter.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -642,15 +648,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.github/workflows/pythonpackage.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="36" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
+        <state relative-caret-position="51">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
