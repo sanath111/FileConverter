@@ -259,24 +259,24 @@ def startConvert(self, main_ui):
           # times = {}
           # startTime = int(round(time.time() * 1000))
           # times["st"] = startTime
-          p = subprocess.Popen(cmd, shell=True)
-          # p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-          # out, err = p.communicate()
-          # debug.info(err)
-          # p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-          # p = subprocess.Popen(shlex.split(cmd), stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
-          # ffmpeg_output, _ = p.communicate()
-          # print(ffmpeg_output)
+          # p = subprocess.Popen(cmd, shell=True)
+          # # p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+          # # out, err = p.communicate()
+          # # debug.info(err)
+          # # p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+          # # p = subprocess.Popen(shlex.split(cmd), stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
+          # # ffmpeg_output, _ = p.communicate()
+          # # print(ffmpeg_output)
+          # # p.wait()
+          # main_ui.progressBar.setRange(int(startFrame.lstrip("0")), int(endFrame.lstrip("0")))
+          # count = 0
+          # while count < int(endFrame.lstrip("0")):
+          #   # debug.info(count)
+          #   count += 1
+          #   time.sleep(0.04)
+          #   main_ui.progressBar.setValue(count)
+          #
           # p.wait()
-          main_ui.progressBar.setRange(int(startFrame.lstrip("0")), int(endFrame.lstrip("0")))
-          count = 0
-          while count < int(endFrame.lstrip("0")):
-            debug.info(count)
-            count += 1
-            time.sleep(0.04)
-            main_ui.progressBar.setValue(count)
-
-          p.wait()
           # poll = p.poll()
           # if poll == None:
           #   debug.info("alive")
@@ -287,23 +287,83 @@ def startConvert(self, main_ui):
           # times["et"] = endTime
           # info = resource.getrusage(resource.RUSAGE_CHILDREN)
           # debug.info(info)
-          if p.returncode != 0:
-              raise NameError
-          else:
-              # debug.info(times)
-              # tt = times["et"] - times["st"]
-              # debug.info(tt)
-              # if tt>0:
-              #   main_ui.progressBar.setValue(100)
+          main_ui.progressBar.setRange(int(startFrame.lstrip("0")), int(endFrame.lstrip("0")))
 
-              # cmdThread = TaskThread(str(cmd))
-              # i = cmdThread.notifyProgress
-              # debug.info(i)
-              # cmdThread.notifyProgress.connect(lambda self, i = i, main_ui = main_ui : progress(self, i, main_ui))
-              # cmdThread.start()
+          thread = pexpect.spawn(cmd)
+          # print "started %s" % cmd
+          # if "Conversion failed!" in thread.read():
+          #     debug.info("error!!!")
+          # debug.info(thread.before)
+          cpl = thread.compile_pattern_list([
+              pexpect.EOF,
+              "frame= *\d+",
+              '(.+)'
+          ])
+          # if thread.expect("Conversion failed!"):
+          #     debug.info("error!!!")
+          listOfI = []
+          while True:
+              i = thread.expect_list(cpl, timeout=None)
+              if i == 0:  # EOF
+                  debug.info("the sub process exited")
+                  # cpCmd = "cp -v " + outputFile + " " + outputDir
+                  # os.system(cpCmd.rstrip())
+                  # messageBox("Conversion Complete",icon=os.path.join(projDir, "imageFiles", "info-icon-1.png"))
+                  break
+
+              elif i == 1:
+                  # if i not in listOfI:
+                  listOfI.append(i)
+                  frame_number = thread.match.group(0)
+                  # debug.info(frame_number)
+                  temp = re.findall(r'\d+', frame_number)
+                  res = list(map(int, temp))
+                  debug.info(res[0])
+                  # main_ui.progressBar.setRange(int(startFrame.lstrip("0")), int(endFrame.lstrip("0")))
+                  # count = 0
+                  # while count < int(endFrame.lstrip("0")):
+                  #   # debug.info(count)
+                  #   count += 1
+                  #   time.sleep(0.04)
+                  main_ui.progressBar.setValue(int(res[0]))
+
+              elif i == 2:
+                  # if i not in listOfI:
+                  listOfI.append(i)
+                  # debug.info("error!!!")
+                  # raise ValueError("Not Available yet")
+                  # break
+                  # unknown_line = thread.match.group(0)
+                  # print unknown_line
+                  pass
+          debug.info(listOfI)
+          if (all(p == 2 for p in listOfI) and len(listOfI) > 0) == True:
+              raise ValueError("Not available yet")
+          # debug.info(all(p == 2 for p in listOfI) and len(listOfI) > 0)
+          else:
               cpCmd = "cp -v " + outputFile + " " + outputDir
               os.system(cpCmd.rstrip())
               messageBox("Conversion Complete",icon=os.path.join(projDir, "imageFiles", "info-icon-1.png"))
+          thread.close()
+
+          #
+          # if p.returncode != 0:
+          #     raise NameError
+          # else:
+          #     # debug.info(times)
+          #     # tt = times["et"] - times["st"]
+          #     # debug.info(tt)
+          #     # if tt>0:
+          #     #   main_ui.progressBar.setValue(100)
+          #
+          #     # cmdThread = TaskThread(str(cmd))
+          #     # i = cmdThread.notifyProgress
+          #     # debug.info(i)
+          #     # cmdThread.notifyProgress.connect(lambda self, i = i, main_ui = main_ui : progress(self, i, main_ui))
+          #     # cmdThread.start()
+          #     cpCmd = "cp -v " + outputFile + " " + outputDir
+          #     os.system(cpCmd.rstrip())
+          #     messageBox("Conversion Complete",icon=os.path.join(projDir, "imageFiles", "info-icon-1.png"))
 
       except:
           debug.info(str(sys.exc_info()))
