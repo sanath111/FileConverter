@@ -191,7 +191,7 @@ testtools==2.3.0
 tornado==5.1
 traceback2==1.4.0
 traitlets==4.3.2
-Twisted==18.7.0
+Twisted==19.7.0
 typing==3.6.4
 ufoLib==3.0.0
 underscore.py==0.1.6
