@@ -8,26 +8,10 @@ __email__ = "sanathshetty111@gmail.com"
 import debug
 import argparse
 import glob
-import multiprocessing
 import os
-import subprocess
 import sys
-import time
-import uuid
-try:
-  import arrow
-except:
-  pass
 import setproctitle
-import simplejson
-import zmq
 import re
-import shutil
-import hashlib
-import tempfile
-import shlex
-import resource
-import timeit
 import pexpect
 
 from PyQt5.QtWidgets import QApplication, QFileSystemModel, QListWidgetItem

@@ -68,6 +68,9 @@
         <property name="text">
          <string>Start Frame:</string>
         </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
        </widget>
       </item>
       <item row="0" column="1">
@@ -85,6 +88,9 @@
         <property name="text">
          <string>Input Format:</string>
         </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
        </widget>
       </item>
       <item row="0" column="3">
@@ -101,6 +107,9 @@
        <widget class="QLabel" name="label_7">
         <property name="text">
          <string>Encoding:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
@@ -129,6 +138,9 @@
         <property name="text">
          <string>End Frame:</string>
         </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
        </widget>
       </item>
       <item row="1" column="1">
@@ -145,6 +157,9 @@
        <widget class="QLabel" name="label_5">
         <property name="text">
          <string>Output Format:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
@@ -172,6 +187,9 @@
        <widget class="QLabel" name="label_8">
         <property name="text">
          <string>Color Mode:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
@@ -206,6 +224,9 @@
         <property name="text">
          <string>File Name:</string>
         </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
        </widget>
       </item>
       <item row="2" column="1" colspan="4">
@@ -222,6 +243,9 @@
        <widget class="QLabel" name="label_6">
         <property name="text">
          <string>Output Folder:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>

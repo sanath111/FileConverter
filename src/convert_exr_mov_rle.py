@@ -11,11 +11,9 @@ import os
 projDir = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2])
 sys.path.append(projDir)
 
-import multiprocessing
 import glob
 import subprocess
-import uuid
-import shutil
+
 
 path = os.path.abspath(sys.argv[1])
 # move_path = None
