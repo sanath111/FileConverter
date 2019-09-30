@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5319dda6-a699-4894-8990-3974c98c901e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/pythonpackage.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/pythonpackage.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,6 +29,7 @@
           <entry key="py" value="43" />
           <entry key="qss" value="3" />
           <entry key="txt" value="1" />
+          <entry key="yml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -36,19 +37,22 @@
           <entry key="Image" value="3" />
           <entry key="PLAIN_TEXT" value="8" />
           <entry key="Python" value="43" />
+          <entry key="YAML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="7075" />
+          <entry key="py" value="7077" />
           <entry key="qss" value="110" />
           <entry key="txt" value="17" />
+          <entry key="yml" value="28" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="127" />
-          <entry key="Python" value="7075" />
+          <entry key="Python" value="7077" />
+          <entry key="YAML" value="28" />
         </counts>
       </usages-collector>
     </session>
@@ -85,26 +89,35 @@
             <state relative-caret-position="255">
               <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
               <folding>
-                <marker date="1569840359993" expanded="true" signature="1491:1495" ph="..." />
-                <marker date="1569840359993" expanded="true" signature="2280:2281" ph="..." />
-                <marker date="1569840359993" expanded="true" signature="2280:2284" ph="..." />
-                <marker date="1569840359993" expanded="true" signature="3529:3729" ph="..." />
-                <marker date="1569840359993" expanded="true" signature="4447:14381" ph="..." />
-                <marker date="1569840359993" expanded="true" signature="6257:12640" ph="..." />
-                <marker date="1569840359993" expanded="true" signature="9907:10067" ph="..." />
-                <marker date="1569840359993" expanded="true" signature="13245:13286" ph="..." />
-                <marker date="1569840359993" expanded="true" signature="13321:13660" ph="..." />
-                <marker date="1569840359993" expanded="true" signature="13394:13399" ph="..." />
+                <marker date="1569841837477" expanded="true" signature="1491:1495" ph="..." />
+                <marker date="1569841837477" expanded="true" signature="2280:2281" ph="..." />
+                <marker date="1569841837477" expanded="true" signature="2280:2284" ph="..." />
+                <marker date="1569841837477" expanded="true" signature="3529:3729" ph="..." />
+                <marker date="1569841837477" expanded="true" signature="4447:14381" ph="..." />
+                <marker date="1569841837477" expanded="true" signature="6257:12640" ph="..." />
+                <marker date="1569841837477" expanded="true" signature="9907:10067" ph="..." />
+                <marker date="1569841837477" expanded="true" signature="13245:13286" ph="..." />
+                <marker date="1569841837477" expanded="true" signature="13321:13660" ph="..." />
+                <marker date="1569841837477" expanded="true" signature="13394:13399" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/requirements.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="34">
               <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.github/workflows/pythonpackage.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="544">
+              <caret line="32" column="36" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -178,14 +191,15 @@
         <option value="$PROJECT_DIR$/src/convert_png_to_qtrle.py" />
         <option value="$PROJECT_DIR$/src/debug.py" />
         <option value="$PROJECT_DIR$/styleSheet/stylesheetTest.qss" />
-        <option value="$PROJECT_DIR$/src/file_converter.py" />
         <option value="$PROJECT_DIR$/src/convert_png_mov_rle.py" />
         <option value="$PROJECT_DIR$/src/convert_exr_mov_rle.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
+        <option value="$PROJECT_DIR$/src/file_converter.py" />
+        <option value="$PROJECT_DIR$/.github/workflows/pythonpackage.yml" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="1919" />
     <option name="width" value="1922" />
     <option name="height" value="1050" />
@@ -218,6 +232,17 @@
             <path>
               <item name="FileConverter" type="b2602c69:ProjectViewProjectNode" />
               <item name="FileConverter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FileConverter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FileConverter" type="462c0819:PsiDirectoryNode" />
+              <item name=".github" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FileConverter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FileConverter" type="462c0819:PsiDirectoryNode" />
+              <item name=".github" type="462c0819:PsiDirectoryNode" />
+              <item name="workflows" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FileConverter" type="b2602c69:ProjectViewProjectNode" />
@@ -384,7 +409,7 @@
     <frame x="1919" y="0" width="1922" height="1050" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15778251" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15778251" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="DB Browser" order="3" />
@@ -397,7 +422,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="DB Execution Console" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.29112554" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.29035753" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="11" weight="0.32900432" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -586,25 +611,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/file_converter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <marker date="1569840359993" expanded="true" signature="1491:1495" ph="..." />
-            <marker date="1569840359993" expanded="true" signature="2280:2281" ph="..." />
-            <marker date="1569840359993" expanded="true" signature="2280:2284" ph="..." />
-            <marker date="1569840359993" expanded="true" signature="3529:3729" ph="..." />
-            <marker date="1569840359993" expanded="true" signature="4447:14381" ph="..." />
-            <marker date="1569840359993" expanded="true" signature="6257:12640" ph="..." />
-            <marker date="1569840359993" expanded="true" signature="9907:10067" ph="..." />
-            <marker date="1569840359993" expanded="true" signature="13245:13286" ph="..." />
-            <marker date="1569840359993" expanded="true" signature="13321:13660" ph="..." />
-            <marker date="1569840359993" expanded="true" signature="13394:13399" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/debug.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -615,10 +621,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/file_converter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <marker date="1569841837477" expanded="true" signature="1491:1495" ph="..." />
+            <marker date="1569841837477" expanded="true" signature="2280:2281" ph="..." />
+            <marker date="1569841837477" expanded="true" signature="2280:2284" ph="..." />
+            <marker date="1569841837477" expanded="true" signature="3529:3729" ph="..." />
+            <marker date="1569841837477" expanded="true" signature="4447:14381" ph="..." />
+            <marker date="1569841837477" expanded="true" signature="6257:12640" ph="..." />
+            <marker date="1569841837477" expanded="true" signature="9907:10067" ph="..." />
+            <marker date="1569841837477" expanded="true" signature="13245:13286" ph="..." />
+            <marker date="1569841837477" expanded="true" signature="13321:13660" ph="..." />
+            <marker date="1569841837477" expanded="true" signature="13394:13399" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.github/workflows/pythonpackage.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="36" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
         </state>
       </provider>
     </entry>
