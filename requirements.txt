@@ -153,7 +153,7 @@ python-xlib==0.23
 pytz==2018.7
 pyusb==1.0.2
 pyxattr==0.6.1
-PyYAML==3.13
+PyYAML==5.1
 pyzmq==17.1.0
 QDarkStyle==2.6.5
 qtconsole==4.3.1
