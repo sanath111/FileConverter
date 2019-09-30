@@ -13,12 +13,14 @@ import sys
 import re
 import pexpect
 import setproctitle
-
-from PyQt5.QtWidgets import QApplication, QFileSystemModel, QListWidgetItem
-from PyQt5 import QtCore, uic, QtGui, QtWidgets
-from PyQt5.QtCore import *
-from PyQt5.QtWidgets import *
-from PyQt5.QtGui import *
+try:
+    from PyQt5.QtWidgets import QApplication, QFileSystemModel, QListWidgetItem
+    from PyQt5 import QtCore, uic, QtGui, QtWidgets
+    from PyQt5.QtCore import *
+    from PyQt5.QtWidgets import *
+    from PyQt5.QtGui import *
+except:
+    pass
 
 projDir = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2])
 sys.path.append(projDir)
