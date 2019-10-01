@@ -316,9 +316,9 @@ def changeFormat(self, main_ui):
 
 def getSelectedFiles(main_ui):
     files =[]
-    selectedItems = main_ui.listFiles.selectedItems()
+    selectedItems = main_ui.listFiles.selectedIndexes()
     for selectedItem in selectedItems:
-        files.append(selectedItem.media.absPath)
+        files.append(selectedItem.data())
 
     return(files)
 
@@ -331,8 +331,8 @@ def popUpFiles(main_ui,context,pos):
   # print(pasteUrls)
 
     menu = QtWidgets.QMenu()
-    renameMenu = QtWidgets.QMenu()
-    renameMenu.setTitle("Batch Rename")
+    renameAction = menu.addAction("Batch Rename")
+    # renameMenu.setTitle("Batch Rename")
   # openMenu = QtWidgets.QMenu()
   # openMenu.setTitle("open with")
   # fileMenu  = QtWidgets.QMenu()
@@ -354,7 +354,7 @@ def popUpFiles(main_ui,context,pos):
     selectedFiles = getSelectedFiles(main_ui)
     # rbhus.debug.info(selectedFiles)
     debug.info(selectedFiles)
-  
+
   # openWithCmdActions = {}
   # if(selectedFiles):
   #   try:
@@ -398,20 +398,21 @@ def popUpFiles(main_ui,context,pos):
   #   ioPasteAction.setEnabled(True)
   # else:
   #   ioPasteAction.setEnabled(False)
-  #
-  #
-  #
-  #
+
+
+
+
   # menu.addMenu(openMenu)
   # menu.addMenu(fileMenu)
   # menu.addMenu(clipboardMenu)
   # menu.addMenu(ioMenu)
-  #
-  # action = menu.exec_(context.mapToGlobal(pos))
-  #
-  #
-  #
-  #
+  #   menu.addMenu(renameMenu)
+    action = menu.exec_(context.mapToGlobal(pos))
+
+    if action == renameAction:
+        debug.info("rename")
+
+
   # if(action in openWithCmdActions.keys()):
   #   runCmd = openWithCmdActions[action]
   #   try:
@@ -435,8 +436,8 @@ def popUpFiles(main_ui,context,pos):
   #     deleteFiles(main_ui)
   #   if(action == fileImageCopyAction):
   #     copyImageToClipboard(main_ui)
-  #
-  #
+
+
 
 
 
@@ -502,7 +503,7 @@ def mainGui(main_ui):
 
     # main_ui.listFiles.clicked.connect(lambda idnx, main_ui = main_ui :filesSelected(modelFiles,main_ui))
     #
-    main_ui.listFiles.customContextMenuRequested.connect(lambda pos, context = main_ui.listFiles, main_ui = main_ui: popUpFiles(main_ui, context, pos))
+    main_ui.listFiles.customContextMenuRequested.connect(lambda pos, context = main_ui.listFiles.viewport(), main_ui = main_ui: popUpFiles(main_ui, context, pos))
     # main_ui.tableFiles.customContextMenuRequested.connect(lambda pos, context = main_ui.tableFiles, main_ui = main_ui: popUpFiles(main_ui, context, pos))
     # main_ui.treeDirs.customContextMenuRequested.connect(lambda pos, main_ui = main_ui: popUpFolders(main_ui, pos))
     #
