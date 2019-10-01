@@ -13,6 +13,8 @@ import sys
 import re
 import pexpect
 import setproctitle
+import subprocess
+
 try:
     from PyQt5.QtWidgets import QApplication, QFileSystemModel, QListWidgetItem
     from PyQt5 import QtCore, uic, QtGui, QtWidgets
@@ -322,127 +324,68 @@ def getSelectedFiles(main_ui):
 
     return(files)
 
+# def getSelectedFileFormat(main_ui):
+#     detectedFormats = []
+#     path = os.path.abspath(main_ui.currentFolder.text().strip())
+#     for format in imageFormats:
+#         images = glob.glob(path.rstrip(os.sep) + os.sep + "*.%s" % format)
+#         images.sort()
+#         if images:
+#             detectedFormats.append(format)
 
 
 def popUpFiles(main_ui,context,pos):
-  # global fileThumbzItems
-  # clip = QtWidgets.QApplication.clipboard()
-  # pasteUrls = clip.mimeData().urls()
-  # print(pasteUrls)
-
     menu = QtWidgets.QMenu()
     renameAction = menu.addAction("Batch Rename")
-    # renameMenu.setTitle("Batch Rename")
-  # openMenu = QtWidgets.QMenu()
-  # openMenu.setTitle("open with")
-  # fileMenu  = QtWidgets.QMenu()
-  # fileMenu.setTitle("file")
-  # ioMenu = QtWidgets.QMenu()
-  # ioMenu.setTitle("IO")
-
-
-  # clipboardMenu = QtWidgets.QMenu()
-  # clipboardMenu.setTitle("clipboard")
-
-  # fileImageCopyAction = clipboardMenu.addAction("copy image to clipboard")
-  # # filePathCopyAction = clipboardMenu.addAction("copy project path to clipboard")
-  # fileImageCopyAction.setEnabled(False)
-  # filePathCopyAction.setEnabled(False)
-
-
 
     selectedFiles = getSelectedFiles(main_ui)
-    # rbhus.debug.info(selectedFiles)
     debug.info(selectedFiles)
-
-  # openWithCmdActions = {}
-  # if(selectedFiles):
-  #   try:
-  #     sel = re.sub("~$", "", selectedFiles[0])
-  #     rbhus.debug.info(sel)
-  #     selected = fileThumbzItems[sel]
-  #     rbhus.debug.info(selected)
-  #   except:
-  #     rbhus.debug.info(sys.exc_info())
-  #     selected = None
-  #   if(selected):
-  #     if(rbhus.constantsPipe.mimeTypesOpenCmds.has_key(selected.media.mimeType)):
-  #       cmds = rbhus.constantsPipe.mimeTypesOpenCmds[selected.media.mimeType]["linux"]
-  #       for cmd in cmds:
-  #         if(rbhus.constantsPipe.mimeCmdsLinux.has_key(cmd)):
-  #           openWithCmdActions[openMenu.addAction(cmd)] = rbhus.constantsPipe.mimeCmdsLinux[cmd]
-  #         else:
-  #           openWithCmdActions[openMenu.addAction(cmd)] = cmd
-  #     if(selected.media.mimeType == "image"):
-  #       fileImageCopyAction.setEnabled(True)
-  #
-  #
-  #   else:
-  #     openWithCmdActions[openMenu.addAction("system_assigned_application")] = "system_assigned_application"
-  #   # filePathCopyAction.setEnabled(True)
-  #
-  #
-  #
-  #
-  #   ioCopyAction = ioMenu.addAction("copy")
-  #   ioDeleteAction = ioMenu.addAction("delete")
-  #   # ioDeleteAction.setEnabled(False)
-  #
-  #   fileNameRenameAction = fileMenu.addAction("rename")
-  #
-  #   # fileCopyPathAction
-  #
-  # ioPasteAction = ioMenu.addAction("paste")
-  #
-  # if(pasteUrls):
-  #   ioPasteAction.setEnabled(True)
-  # else:
-  #   ioPasteAction.setEnabled(False)
-
-
-
-
-  # menu.addMenu(openMenu)
-  # menu.addMenu(fileMenu)
-  # menu.addMenu(clipboardMenu)
-  # menu.addMenu(ioMenu)
-  #   menu.addMenu(renameMenu)
     action = menu.exec_(context.mapToGlobal(pos))
+    path = os.path.abspath(main_ui.currentFolder.text().strip())
+    # filePath = path+"/"+selectedFiles[0]
+    # debug.info(filePath)
+    if selectedFiles:
+        formatOfSelected = selectedFiles[0].split(".")[-1]
+        debug.info(formatOfSelected)
+        if formatOfSelected in imageFormats:
+            if action == renameAction:
+                debug.info("rename action")
+                cmd = "python "+os.path.join(projDir, "src", "batch_rename.py")+" --path "+path+" --asset "+selectedFiles[0]
+                debug.info(cmd)
+                p = subprocess.Popen(cmd, shell=True)
+                # p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                p.wait()
 
-    if action == renameAction:
-        debug.info("rename")
+    # detectedFormats = []
+    # path = os.path.abspath(main_ui.currentFolder.text().strip())
+    # for format in imageFormats:
+    #     images = glob.glob(path.rstrip(os.sep) + os.sep + "*.%s" % format)
+    #     images.sort()
+    #     if images:
+    #         debug.info(images)
+    #         detectedFormats.append(format)
+    #         if len(detectedFormats)>=2:
+    #             debug.info("multiple formats detected")
+    #
+    #         else:
+    #             if selectedFiles:
+    #                 # action = menu.exec_(context.mapToGlobal(pos))
+    #                 if action == renameAction:
+    #                     debug.info("rename action")
+    #                     cmd = "python "+os.path.join(projDir, "src", "batch_rename.py")+" --path "+path
+    #                     debug.info(cmd)
+    #                     p = subprocess.Popen(cmd, shell=True)
+    #                     # p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    #                     p.wait()
 
-
-  # if(action in openWithCmdActions.keys()):
-  #   runCmd = openWithCmdActions[action]
-  #   try:
-  #     openFile(main_ui,runCmd)
-  #   except:
-  #     rbhus.debug.error(sys.exc_info)
-  #
-  # if(action == ioPasteAction):
-  #   pasteFilesFromClipboard(main_ui,pasteUrls)
-  #
-  # if(selectedFiles):
-  #   if(action == ioCopyAction):
-  #     copyToClipboard(main_ui)
-  #
-  #   if(action == fileNameRenameAction):
-  #     try:
-  #       fileRenameDialog(main_ui)
-  #     except:
-  #       print("rename failed : " + str(sys.exc_info()))
-  #   if(action == ioDeleteAction):
-  #     deleteFiles(main_ui)
-  #   if(action == fileImageCopyAction):
-  #     copyImageToClipboard(main_ui)
-
-
-
-
-
-
-
+    # if selectedFiles:
+    #     if action == renameAction:
+    #         debug.info("rename")
+    #         cmd = "python "+os.path.join(projDir, "src", "batch_rename.py")+" --path /tmp/"
+    #         debug.info(cmd)
+    #         p = subprocess.Popen(cmd, shell=True)
+    #         # p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    #         p.wait()
 
 
 def messageBox(msg1, msg2="", icon=""):
