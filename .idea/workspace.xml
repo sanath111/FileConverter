@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5319dda6-a699-4894-8990-3974c98c901e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/file_converter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/file_converter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uiFiles/file_converter.ui" beforeDir="false" afterPath="$PROJECT_DIR$/uiFiles/file_converter.ui" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,7 +43,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="7852" />
+          <entry key="py" value="7946" />
           <entry key="qss" value="110" />
           <entry key="txt" value="53" />
           <entry key="yml" value="28" />
@@ -54,7 +52,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="163" />
-          <entry key="Python" value="7745" />
+          <entry key="Python" value="7839" />
           <entry key="Scratch" value="107" />
           <entry key="YAML" value="28" />
         </counts>
@@ -90,21 +88,22 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/file_converter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
-              <caret line="391" lean-forward="true" selection-start-line="391" selection-end-line="391" />
+            <state relative-caret-position="427">
+              <caret line="355" lean-forward="true" selection-start-line="355" selection-end-line="355" />
               <folding>
                 <element signature="e#136#148#0" expanded="true" />
                 <element signature="e#7966#7984#0" />
                 <element signature="e#10325#10348#0" />
-                <marker date="1569913361834" expanded="true" signature="1536:1538" ph="..." />
-                <marker date="1569913361834" expanded="true" signature="1570:1575" ph="..." />
-                <marker date="1569913361834" expanded="true" signature="2331:2332" ph="..." />
-                <marker date="1569913361834" expanded="true" signature="2331:2335" ph="..." />
-                <marker date="1569913361834" expanded="true" signature="2365:2370" ph="..." />
-                <marker date="1569913361834" expanded="true" signature="3610:3820" ph="..." />
-                <marker date="1569913361834" expanded="true" signature="4570:11727" ph="..." />
-                <marker date="1569913361834" expanded="true" signature="5798:10790" ph="..." />
-                <marker date="1569913361834" expanded="true" signature="10998:11000" ph="..." />
+                <marker date="1569915056530" expanded="true" signature="1536:1538" ph="..." />
+                <marker date="1569915056530" expanded="true" signature="1570:1575" ph="..." />
+                <marker date="1569915056530" expanded="true" signature="2331:2332" ph="..." />
+                <marker date="1569915056530" expanded="true" signature="2331:2335" ph="..." />
+                <marker date="1569915056530" expanded="true" signature="2365:2370" ph="..." />
+                <marker date="1569915056530" expanded="true" signature="3610:3820" ph="..." />
+                <marker date="1569915056530" expanded="true" signature="4570:14949" ph="..." />
+                <marker date="1569915056530" expanded="true" signature="5798:10790" ph="..." />
+                <marker date="1569915056530" expanded="true" signature="10998:11000" ph="..." />
+                <marker date="1569915056530" expanded="true" signature="11449:11452" ph="..." />
               </folding>
             </state>
           </provider>
@@ -677,21 +676,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/file_converter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="391" lean-forward="true" selection-start-line="391" selection-end-line="391" />
+        <state relative-caret-position="427">
+          <caret line="355" lean-forward="true" selection-start-line="355" selection-end-line="355" />
           <folding>
             <element signature="e#136#148#0" expanded="true" />
             <element signature="e#7966#7984#0" />
             <element signature="e#10325#10348#0" />
-            <marker date="1569913361834" expanded="true" signature="1536:1538" ph="..." />
-            <marker date="1569913361834" expanded="true" signature="1570:1575" ph="..." />
-            <marker date="1569913361834" expanded="true" signature="2331:2332" ph="..." />
-            <marker date="1569913361834" expanded="true" signature="2331:2335" ph="..." />
-            <marker date="1569913361834" expanded="true" signature="2365:2370" ph="..." />
-            <marker date="1569913361834" expanded="true" signature="3610:3820" ph="..." />
-            <marker date="1569913361834" expanded="true" signature="4570:11727" ph="..." />
-            <marker date="1569913361834" expanded="true" signature="5798:10790" ph="..." />
-            <marker date="1569913361834" expanded="true" signature="10998:11000" ph="..." />
+            <marker date="1569915056530" expanded="true" signature="1536:1538" ph="..." />
+            <marker date="1569915056530" expanded="true" signature="1570:1575" ph="..." />
+            <marker date="1569915056530" expanded="true" signature="2331:2332" ph="..." />
+            <marker date="1569915056530" expanded="true" signature="2331:2335" ph="..." />
+            <marker date="1569915056530" expanded="true" signature="2365:2370" ph="..." />
+            <marker date="1569915056530" expanded="true" signature="3610:3820" ph="..." />
+            <marker date="1569915056530" expanded="true" signature="4570:14949" ph="..." />
+            <marker date="1569915056530" expanded="true" signature="5798:10790" ph="..." />
+            <marker date="1569915056530" expanded="true" signature="10998:11000" ph="..." />
+            <marker date="1569915056530" expanded="true" signature="11449:11452" ph="..." />
           </folding>
         </state>
       </provider>

@@ -314,6 +314,136 @@ def changeFormat(self, main_ui):
     main_ui.fileName.setText(filename)
 
 
+def getSelectedFiles(main_ui):
+    files =[]
+    selectedItems = main_ui.listFiles.selectedItems()
+    for selectedItem in selectedItems:
+        files.append(selectedItem.media.absPath)
+
+    return(files)
+
+
+
+def popUpFiles(main_ui,context,pos):
+  # global fileThumbzItems
+  # clip = QtWidgets.QApplication.clipboard()
+  # pasteUrls = clip.mimeData().urls()
+  # print(pasteUrls)
+
+    menu = QtWidgets.QMenu()
+    renameMenu = QtWidgets.QMenu()
+    renameMenu.setTitle("Batch Rename")
+  # openMenu = QtWidgets.QMenu()
+  # openMenu.setTitle("open with")
+  # fileMenu  = QtWidgets.QMenu()
+  # fileMenu.setTitle("file")
+  # ioMenu = QtWidgets.QMenu()
+  # ioMenu.setTitle("IO")
+
+
+  # clipboardMenu = QtWidgets.QMenu()
+  # clipboardMenu.setTitle("clipboard")
+
+  # fileImageCopyAction = clipboardMenu.addAction("copy image to clipboard")
+  # # filePathCopyAction = clipboardMenu.addAction("copy project path to clipboard")
+  # fileImageCopyAction.setEnabled(False)
+  # filePathCopyAction.setEnabled(False)
+
+
+
+    selectedFiles = getSelectedFiles(main_ui)
+    # rbhus.debug.info(selectedFiles)
+    debug.info(selectedFiles)
+  
+  # openWithCmdActions = {}
+  # if(selectedFiles):
+  #   try:
+  #     sel = re.sub("~$", "", selectedFiles[0])
+  #     rbhus.debug.info(sel)
+  #     selected = fileThumbzItems[sel]
+  #     rbhus.debug.info(selected)
+  #   except:
+  #     rbhus.debug.info(sys.exc_info())
+  #     selected = None
+  #   if(selected):
+  #     if(rbhus.constantsPipe.mimeTypesOpenCmds.has_key(selected.media.mimeType)):
+  #       cmds = rbhus.constantsPipe.mimeTypesOpenCmds[selected.media.mimeType]["linux"]
+  #       for cmd in cmds:
+  #         if(rbhus.constantsPipe.mimeCmdsLinux.has_key(cmd)):
+  #           openWithCmdActions[openMenu.addAction(cmd)] = rbhus.constantsPipe.mimeCmdsLinux[cmd]
+  #         else:
+  #           openWithCmdActions[openMenu.addAction(cmd)] = cmd
+  #     if(selected.media.mimeType == "image"):
+  #       fileImageCopyAction.setEnabled(True)
+  #
+  #
+  #   else:
+  #     openWithCmdActions[openMenu.addAction("system_assigned_application")] = "system_assigned_application"
+  #   # filePathCopyAction.setEnabled(True)
+  #
+  #
+  #
+  #
+  #   ioCopyAction = ioMenu.addAction("copy")
+  #   ioDeleteAction = ioMenu.addAction("delete")
+  #   # ioDeleteAction.setEnabled(False)
+  #
+  #   fileNameRenameAction = fileMenu.addAction("rename")
+  #
+  #   # fileCopyPathAction
+  #
+  # ioPasteAction = ioMenu.addAction("paste")
+  #
+  # if(pasteUrls):
+  #   ioPasteAction.setEnabled(True)
+  # else:
+  #   ioPasteAction.setEnabled(False)
+  #
+  #
+  #
+  #
+  # menu.addMenu(openMenu)
+  # menu.addMenu(fileMenu)
+  # menu.addMenu(clipboardMenu)
+  # menu.addMenu(ioMenu)
+  #
+  # action = menu.exec_(context.mapToGlobal(pos))
+  #
+  #
+  #
+  #
+  # if(action in openWithCmdActions.keys()):
+  #   runCmd = openWithCmdActions[action]
+  #   try:
+  #     openFile(main_ui,runCmd)
+  #   except:
+  #     rbhus.debug.error(sys.exc_info)
+  #
+  # if(action == ioPasteAction):
+  #   pasteFilesFromClipboard(main_ui,pasteUrls)
+  #
+  # if(selectedFiles):
+  #   if(action == ioCopyAction):
+  #     copyToClipboard(main_ui)
+  #
+  #   if(action == fileNameRenameAction):
+  #     try:
+  #       fileRenameDialog(main_ui)
+  #     except:
+  #       print("rename failed : " + str(sys.exc_info()))
+  #   if(action == ioDeleteAction):
+  #     deleteFiles(main_ui)
+  #   if(action == fileImageCopyAction):
+  #     copyImageToClipboard(main_ui)
+  #
+  #
+
+
+
+
+
+
+
 def messageBox(msg1, msg2="", icon=""):
     msg = QtWidgets.QMessageBox()
     msg.setWindowTitle("Message")
@@ -372,7 +502,7 @@ def mainGui(main_ui):
 
     # main_ui.listFiles.clicked.connect(lambda idnx, main_ui = main_ui :filesSelected(modelFiles,main_ui))
     #
-    # main_ui.listFiles.customContextMenuRequested.connect(lambda pos, context = main_ui.listFiles, main_ui = main_ui: popUpFiles(main_ui, context, pos))
+    main_ui.listFiles.customContextMenuRequested.connect(lambda pos, context = main_ui.listFiles, main_ui = main_ui: popUpFiles(main_ui, context, pos))
     # main_ui.tableFiles.customContextMenuRequested.connect(lambda pos, context = main_ui.tableFiles, main_ui = main_ui: popUpFiles(main_ui, context, pos))
     # main_ui.treeDirs.customContextMenuRequested.connect(lambda pos, main_ui = main_ui: popUpFolders(main_ui, pos))
     #
