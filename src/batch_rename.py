@@ -73,7 +73,7 @@ def rename(self,main_ui):
         os.rename(src, dst)
         i += 1
 
-
+    QApplication.quit()
 
 
 def mainGui(main_ui):
@@ -86,6 +86,8 @@ def mainGui(main_ui):
     main_ui.folderName.setText(dirPath+"/")
     main_ui.folderName.setEnabled(False)
     main_ui.oldName.setText(imageName)
+    main_ui.oldName.setReadOnly(True)
+    main_ui.newName.setToolTip("New Name for the batch of files. Don't put extensions")
 
     main_ui.renameButton.clicked.connect(lambda self, main_ui = main_ui : rename(self, main_ui))
 
