@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5319dda6-a699-4894-8990-3974c98c901e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/file_converter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/file_converter.py" afterDir="false" />
     </list>
@@ -25,7 +26,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="COPYING" value="2" />
-          <entry key="gitignore" value="3" />
+          <entry key="gitignore" value="4" />
           <entry key="png" value="3" />
           <entry key="properties" value="1" />
           <entry key="py" value="51" />
@@ -37,7 +38,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Image" value="3" />
-          <entry key="PLAIN_TEXT" value="11" />
+          <entry key="PLAIN_TEXT" value="12" />
           <entry key="Python" value="50" />
           <entry key="Scratch" value="2" />
           <entry key="YAML" value="1" />
@@ -45,7 +46,8 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="10359" />
+          <entry key="gitignore" value="2" />
+          <entry key="py" value="10385" />
           <entry key="qss" value="145" />
           <entry key="txt" value="53" />
           <entry key="yml" value="28" />
@@ -53,8 +55,8 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="198" />
-          <entry key="Python" value="10251" />
+          <entry key="PLAIN_TEXT" value="200" />
+          <entry key="Python" value="10277" />
           <entry key="Scratch" value="108" />
           <entry key="YAML" value="28" />
         </counts>
@@ -90,24 +92,33 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/file_converter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="229" column="16" selection-start-line="229" selection-start-column="16" selection-end-line="229" selection-end-column="16" />
+            <state relative-caret-position="325">
+              <caret line="229" column="16" lean-forward="true" selection-start-line="229" selection-start-column="16" selection-end-line="229" selection-end-column="16" />
               <folding>
                 <element signature="e#136#148#0" expanded="true" />
                 <element signature="e#7416#7434#0" />
                 <element signature="e#10301#10324#0" />
-                <marker date="1570013244277" expanded="true" signature="1576:1578" ph="..." />
-                <marker date="1570013244277" expanded="true" signature="1610:1615" ph="..." />
-                <marker date="1570013244277" expanded="true" signature="2371:2372" ph="..." />
-                <marker date="1570013244277" expanded="true" signature="2371:2375" ph="..." />
-                <marker date="1570013244277" expanded="true" signature="2405:2410" ph="..." />
-                <marker date="1570013244277" expanded="true" signature="3681:3803" ph="..." />
-                <marker date="1570013244277" expanded="true" signature="3834:4044" ph="..." />
-                <marker date="1570013244277" expanded="true" signature="4794:14170" ph="..." />
-                <marker date="1570013244277" expanded="true" signature="6288:11738" ph="..." />
-                <marker date="1570013244277" expanded="true" signature="11946:11948" ph="..." />
-                <marker date="1570013244277" expanded="true" signature="12412:12680" ph="..." />
+                <marker date="1570013420790" expanded="true" signature="1576:1578" ph="..." />
+                <marker date="1570013420790" expanded="true" signature="1610:1615" ph="..." />
+                <marker date="1570013420790" expanded="true" signature="2371:2372" ph="..." />
+                <marker date="1570013420790" expanded="true" signature="2371:2375" ph="..." />
+                <marker date="1570013420790" expanded="true" signature="2405:2410" ph="..." />
+                <marker date="1570013420790" expanded="true" signature="3681:3803" ph="..." />
+                <marker date="1570013420790" expanded="true" signature="3834:4044" ph="..." />
+                <marker date="1570013420790" expanded="true" signature="4794:14206" ph="..." />
+                <marker date="1570013420790" expanded="true" signature="6288:11774" ph="..." />
+                <marker date="1570013420790" expanded="true" signature="11982:11984" ph="..." />
+                <marker date="1570013420790" expanded="true" signature="12448:12716" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -187,8 +198,8 @@
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_5.py" />
         <option value="$PROJECT_DIR$/src/batch_rename.py" />
         <option value="$PROJECT_DIR$/styleSheet/stylesheetTest.qss" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/file_converter.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -650,17 +661,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/styleSheet/stylesheetTest.qss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
           <caret line="514" column="27" selection-start-line="514" selection-start-column="22" selection-end-line="514" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/convert_exr_mov_rle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="15" lean-forward="true" selection-start-line="28" selection-end-line="29" />
+          <folding>
+            <element signature="e#133#143#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -675,35 +689,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/convert_exr_mov_rle.py">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="15" lean-forward="true" selection-start-line="28" selection-end-line="29" />
-          <folding>
-            <element signature="e#133#143#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="34">
+          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/file_converter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="229" column="16" selection-start-line="229" selection-start-column="16" selection-end-line="229" selection-end-column="16" />
+        <state relative-caret-position="325">
+          <caret line="229" column="16" lean-forward="true" selection-start-line="229" selection-start-column="16" selection-end-line="229" selection-end-column="16" />
           <folding>
             <element signature="e#136#148#0" expanded="true" />
             <element signature="e#7416#7434#0" />
             <element signature="e#10301#10324#0" />
-            <marker date="1570013244277" expanded="true" signature="1576:1578" ph="..." />
-            <marker date="1570013244277" expanded="true" signature="1610:1615" ph="..." />
-            <marker date="1570013244277" expanded="true" signature="2371:2372" ph="..." />
-            <marker date="1570013244277" expanded="true" signature="2371:2375" ph="..." />
-            <marker date="1570013244277" expanded="true" signature="2405:2410" ph="..." />
-            <marker date="1570013244277" expanded="true" signature="3681:3803" ph="..." />
-            <marker date="1570013244277" expanded="true" signature="3834:4044" ph="..." />
-            <marker date="1570013244277" expanded="true" signature="4794:14170" ph="..." />
-            <marker date="1570013244277" expanded="true" signature="6288:11738" ph="..." />
-            <marker date="1570013244277" expanded="true" signature="11946:11948" ph="..." />
-            <marker date="1570013244277" expanded="true" signature="12412:12680" ph="..." />
+            <marker date="1570013420790" expanded="true" signature="1576:1578" ph="..." />
+            <marker date="1570013420790" expanded="true" signature="1610:1615" ph="..." />
+            <marker date="1570013420790" expanded="true" signature="2371:2372" ph="..." />
+            <marker date="1570013420790" expanded="true" signature="2371:2375" ph="..." />
+            <marker date="1570013420790" expanded="true" signature="2405:2410" ph="..." />
+            <marker date="1570013420790" expanded="true" signature="3681:3803" ph="..." />
+            <marker date="1570013420790" expanded="true" signature="3834:4044" ph="..." />
+            <marker date="1570013420790" expanded="true" signature="4794:14206" ph="..." />
+            <marker date="1570013420790" expanded="true" signature="6288:11774" ph="..." />
+            <marker date="1570013420790" expanded="true" signature="11982:11984" ph="..." />
+            <marker date="1570013420790" expanded="true" signature="12448:12716" ph="..." />
           </folding>
         </state>
       </provider>
