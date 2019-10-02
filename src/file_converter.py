@@ -227,7 +227,7 @@ def startConvert(self, main_ui):
                 # debug.info(images)
                 input = "_".join(images[-1].split(".")[0].split("_")[:-1]) + "_%04d."+format
                 debug.info(input)
-                
+
             encoding = main_ui.encoding.currentText().strip()
             colorMode = main_ui.colorMode.currentText().strip()
             outputFormat = main_ui.outputFormat.currentText().strip()
