@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5319dda6-a699-4894-8990-3974c98c901e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/batch_rename.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/file_converter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/file_converter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uiFiles/file_converter.ui" beforeDir="false" afterPath="$PROJECT_DIR$/uiFiles/file_converter.ui" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,10 +16,11 @@
     <session id="-370239464">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.2" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.30" value="1" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -28,8 +29,8 @@
           <entry key="gitignore" value="2" />
           <entry key="png" value="3" />
           <entry key="properties" value="1" />
-          <entry key="py" value="50" />
-          <entry key="qss" value="4" />
+          <entry key="py" value="51" />
+          <entry key="qss" value="5" />
           <entry key="txt" value="1" />
           <entry key="yml" value="1" />
         </counts>
@@ -37,24 +38,24 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Image" value="3" />
-          <entry key="PLAIN_TEXT" value="9" />
-          <entry key="Python" value="49" />
+          <entry key="PLAIN_TEXT" value="10" />
+          <entry key="Python" value="50" />
           <entry key="Scratch" value="2" />
           <entry key="YAML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="9400" />
-          <entry key="qss" value="110" />
+          <entry key="py" value="10139" />
+          <entry key="qss" value="145" />
           <entry key="txt" value="53" />
           <entry key="yml" value="28" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="163" />
-          <entry key="Python" value="9292" />
+          <entry key="PLAIN_TEXT" value="198" />
+          <entry key="Python" value="10031" />
           <entry key="Scratch" value="108" />
           <entry key="YAML" value="28" />
         </counts>
@@ -66,7 +67,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/convert_exr_mov_rle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
+            <state relative-caret-position="238">
               <caret line="15" selection-start-line="15" selection-end-line="15" />
               <folding>
                 <element signature="e#133#143#0" expanded="true" />
@@ -78,7 +79,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/convert_png_mov_rle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
+            <state relative-caret-position="204">
               <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
               <folding>
                 <element signature="e#133#143#0" expanded="true" />
@@ -87,49 +88,49 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/file_converter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="163" column="24" lean-forward="true" selection-start-line="163" selection-start-column="24" selection-end-line="163" selection-end-column="24" />
+            <state relative-caret-position="282">
+              <caret line="204" column="8" selection-start-line="204" selection-start-column="8" selection-end-line="204" selection-end-column="8" />
               <folding>
                 <element signature="e#136#148#0" expanded="true" />
-                <element signature="e#7966#7984#0" />
-                <element signature="e#10325#10348#0" />
-                <marker date="1569936946181" expanded="true" signature="1555:1557" ph="..." />
-                <marker date="1569936946181" expanded="true" signature="1589:1594" ph="..." />
-                <marker date="1569936946181" expanded="true" signature="2350:2351" ph="..." />
-                <marker date="1569936946181" expanded="true" signature="2350:2354" ph="..." />
-                <marker date="1569936946181" expanded="true" signature="2384:2389" ph="..." />
-                <marker date="1569936946181" expanded="true" signature="3629:3839" ph="..." />
-                <marker date="1569936946181" expanded="true" signature="4589:14672" ph="..." />
-                <marker date="1569936946181" expanded="true" signature="5817:10809" ph="..." />
-                <marker date="1569936946181" expanded="true" signature="11017:11019" ph="..." />
-                <marker date="1569936946181" expanded="true" signature="11462:11760" ph="..." />
-                <marker date="1569936946181" expanded="true" signature="14147:14149" ph="..." />
+                <element signature="e#7416#7434#0" />
+                <element signature="e#10301#10324#0" />
+                <marker date="1570006587513" expanded="true" signature="1555:1557" ph="..." />
+                <marker date="1570006587513" expanded="true" signature="1589:1594" ph="..." />
+                <marker date="1570006587513" expanded="true" signature="2350:2351" ph="..." />
+                <marker date="1570006587513" expanded="true" signature="2350:2354" ph="..." />
+                <marker date="1570006587513" expanded="true" signature="2384:2389" ph="..." />
+                <marker date="1570006587513" expanded="true" signature="3660:3782" ph="..." />
+                <marker date="1570006587513" expanded="true" signature="3813:4023" ph="..." />
+                <marker date="1570006587513" expanded="true" signature="4773:13539" ph="..." />
+                <marker date="1570006587513" expanded="true" signature="6115:11107" ph="..." />
+                <marker date="1570006587513" expanded="true" signature="11315:11317" ph="..." />
+                <marker date="1570006587513" expanded="true" signature="11781:12049" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/styleSheet/stylesheetTest.qss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="273">
+              <caret line="514" column="27" selection-start-line="514" selection-start-column="22" selection-end-line="514" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/batch_rename.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="427">
-              <caret line="60" column="9" lean-forward="true" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="9" />
+            <state relative-caret-position="257">
+              <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
               <folding>
                 <element signature="e#136#148#0" expanded="true" />
                 <marker date="1569938162295" expanded="true" signature="1373:2000" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_5.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="22" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="22" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -145,11 +146,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>png</find>
-      <find>treeDirs</find>
-      <find>asset</find>
-      <find>curRootIdx</find>
-      <find>CUR_ROOTDIR_POINTER</find>
       <find>FSM4Files</find>
       <find>QCombo</find>
       <find>QTreeView</find>
@@ -174,6 +170,12 @@
       <find>popUpFiles</find>
       <find>currentFolder</find>
       <find>listFiles</find>
+      <find>lineedit</find>
+      <find>clear</find>
+      <find>treeview</find>
+      <find>lineEdit</find>
+      <find>setText</find>
+      <find>button</find>
     </findStrings>
     <replaceStrings>
       <replace>exr</replace>
@@ -192,17 +194,18 @@
         <option value="$PROJECT_DIR$/src/convert_exr_mov_rle.py" />
         <option value="$PROJECT_DIR$/.github/workflows/pythonpackage.yml" />
         <option value="$PROJECT_DIR$/requirements.txt" />
-        <option value="$PROJECT_DIR$/styleSheet/stylesheetTest.qss" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_5.py" />
-        <option value="$PROJECT_DIR$/src/file_converter.py" />
         <option value="$PROJECT_DIR$/src/batch_rename.py" />
+        <option value="$PROJECT_DIR$/styleSheet/stylesheetTest.qss" />
+        <option value="$PROJECT_DIR$/src/file_converter.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1" />
-    <option name="width" value="1922" />
-    <option name="height" value="1050" />
+    <option name="x" value="731" />
+    <option name="y" value="140" />
+    <option name="width" value="1914" />
+    <option name="height" value="1051" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -441,7 +444,7 @@
     <frame x="-1" y="0" width="1922" height="1050" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15778251" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15938166" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="DB Browser" order="3" />
@@ -468,24 +471,9 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file:///usr/lib64/python2.7/glob.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#34#44#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/convert_png_to_qtrle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
-          <folding>
-            <element signature="e#135#145#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/convert_png_to_qtrle.py" />
     <entry file="file://$USER_HOME$/.PyCharmCE2018.2/system/python_stubs/-1247972723/PyQt5/QtWidgets/__init__/QGroupBox.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
@@ -524,12 +512,8 @@
     <entry file="file://$PROJECT_DIR$/imageFiles/arrow-right-1.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/imageFiles/arrow-right-3.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imageFiles/arrow-right-2.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/imageFiles/arrow-right-3.png" />
+    <entry file="file://$PROJECT_DIR$/imageFiles/arrow-right-2.png" />
     <entry file="file://$USER_HOME$/.PyCharmCE2018.2/system/python_stubs/-1247972723/PyQt4/QtGui/__init__/QTableView.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
@@ -562,9 +546,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -602,26 +583,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/convert_exr_mov_rle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="e#133#143#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/convert_png_mov_rle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-          <folding>
-            <element signature="e#133#143#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/lib64/python2.7/site-packages/PyQt5/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -636,30 +597,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.properties">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.properties" />
     <entry file="file://$PROJECT_DIR$/.github/workflows/pythonpackage.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/debug.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#135#145#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/styleSheet/stylesheetTest.qss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="476" lean-forward="true" selection-start-line="476" selection-end-line="476" />
         </state>
       </provider>
     </entry>
@@ -684,36 +626,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_5.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="22" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="22" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/file_converter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="163" column="24" lean-forward="true" selection-start-line="163" selection-start-column="24" selection-end-line="163" selection-end-column="24" />
-          <folding>
-            <element signature="e#136#148#0" expanded="true" />
-            <element signature="e#7966#7984#0" />
-            <element signature="e#10325#10348#0" />
-            <marker date="1569936946181" expanded="true" signature="1555:1557" ph="..." />
-            <marker date="1569936946181" expanded="true" signature="1589:1594" ph="..." />
-            <marker date="1569936946181" expanded="true" signature="2350:2351" ph="..." />
-            <marker date="1569936946181" expanded="true" signature="2350:2354" ph="..." />
-            <marker date="1569936946181" expanded="true" signature="2384:2389" ph="..." />
-            <marker date="1569936946181" expanded="true" signature="3629:3839" ph="..." />
-            <marker date="1569936946181" expanded="true" signature="4589:14672" ph="..." />
-            <marker date="1569936946181" expanded="true" signature="5817:10809" ph="..." />
-            <marker date="1569936946181" expanded="true" signature="11017:11019" ph="..." />
-            <marker date="1569936946181" expanded="true" signature="11462:11760" ph="..." />
-            <marker date="1569936946181" expanded="true" signature="14147:14149" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.PyCharmCE2018.2/system/python_stubs/-1247972723/__builtin__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
@@ -721,13 +633,80 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/convert_exr_mov_rle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="e#133#143#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/convert_png_mov_rle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+          <folding>
+            <element signature="e#133#143#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_5.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="22" selection-start-line="11" selection-start-column="4" selection-end-line="22" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/debug.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="e#135#145#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/batch_rename.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="60" column="9" lean-forward="true" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="9" />
+        <state relative-caret-position="257">
+          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
           <folding>
             <element signature="e#136#148#0" expanded="true" />
             <marker date="1569938162295" expanded="true" signature="1373:2000" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/styleSheet/stylesheetTest.qss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="514" column="27" selection-start-line="514" selection-start-column="22" selection-end-line="514" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/file_converter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="204" column="8" selection-start-line="204" selection-start-column="8" selection-end-line="204" selection-end-column="8" />
+          <folding>
+            <element signature="e#136#148#0" expanded="true" />
+            <element signature="e#7416#7434#0" />
+            <element signature="e#10301#10324#0" />
+            <marker date="1570006587513" expanded="true" signature="1555:1557" ph="..." />
+            <marker date="1570006587513" expanded="true" signature="1589:1594" ph="..." />
+            <marker date="1570006587513" expanded="true" signature="2350:2351" ph="..." />
+            <marker date="1570006587513" expanded="true" signature="2350:2354" ph="..." />
+            <marker date="1570006587513" expanded="true" signature="2384:2389" ph="..." />
+            <marker date="1570006587513" expanded="true" signature="3660:3782" ph="..." />
+            <marker date="1570006587513" expanded="true" signature="3813:4023" ph="..." />
+            <marker date="1570006587513" expanded="true" signature="4773:13539" ph="..." />
+            <marker date="1570006587513" expanded="true" signature="6115:11107" ph="..." />
+            <marker date="1570006587513" expanded="true" signature="11315:11317" ph="..." />
+            <marker date="1570006587513" expanded="true" signature="11781:12049" ph="..." />
           </folding>
         </state>
       </provider>

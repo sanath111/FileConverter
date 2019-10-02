@@ -244,6 +244,9 @@
               <height>0</height>
              </size>
             </property>
+            <property name="clearButtonEnabled">
+             <bool>true</bool>
+            </property>
            </widget>
           </item>
           <item row="3" column="0">
@@ -263,6 +266,9 @@
               <width>401</width>
               <height>0</height>
              </size>
+            </property>
+            <property name="clearButtonEnabled">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -286,7 +292,18 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="currentFolder"/>
+          <widget class="QLineEdit" name="currentFolder">
+           <property name="clearButtonEnabled">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="copyButton">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QPushButton" name="upButton">

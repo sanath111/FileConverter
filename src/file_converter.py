@@ -93,6 +93,7 @@ def dirSelected(idx, modelDirs, main_ui):
     CUR_DIR_SELECTED = pathSelected.strip()
     debug.info(CUR_DIR_SELECTED)
 
+    main_ui.currentFolder.clear()
     main_ui.currentFolder.setText(CUR_DIR_SELECTED)
 
     modelFiles = FSM4Files(parent=main_ui)
@@ -123,6 +124,11 @@ def dirSelected(idx, modelDirs, main_ui):
 #
 #
 #   return(files)
+
+def copyPath(self, main_ui):
+    path = main_ui.currentFolder.text().strip()
+    main_ui.outputFolder.clear()
+    main_ui.outputFolder.setText(path)
 
 def previousDir(self, main_ui):
     # debug.info("previous directory")
@@ -177,6 +183,10 @@ def getDetails(ROOTDIRNEW, main_ui):
             endFrame = images[-1].split("_")[-1].rstrip(".%s" %format)
             # debug.info(startFrame+endFrame)
             mov = "_".join(images[-1].split(".")[0].split("_")[:-1]) + ".mov"
+
+            main_ui.fileName.clear()
+            main_ui.startFrame.clear()
+            main_ui.endFrame.clear()
 
             main_ui.fileName.setText(mov)
             main_ui.startFrame.setText(startFrame)
@@ -313,6 +323,7 @@ def startConvert(self, main_ui):
 def changeFormat(self, main_ui):
     format = main_ui.outputFormat.currentText().strip()
     filename = main_ui.fileName.text().strip().split(".")[0] + "."+format
+    main_ui.fileName.clear()
     main_ui.fileName.setText(filename)
 
 
@@ -324,14 +335,14 @@ def getSelectedFiles(main_ui):
 
     return(files)
 
-# def getSelectedFileFormat(main_ui):
-#     detectedFormats = []
-#     path = os.path.abspath(main_ui.currentFolder.text().strip())
-#     for format in imageFormats:
-#         images = glob.glob(path.rstrip(os.sep) + os.sep + "*.%s" % format)
-#         images.sort()
-#         if images:
-#             detectedFormats.append(format)
+
+def openFile(self, main_ui):
+    debug.info("double clicked!!!")
+    selectedFiles = getSelectedFiles(main_ui)
+    path = os.path.abspath(main_ui.currentFolder.text().strip())
+    openCmd = "xdg-open "+path+"/"+selectedFiles[0]
+    debug.info(openCmd)
+    subprocess.Popen(openCmd, shell=True)
 
 
 def popUpFiles(main_ui,context,pos):
@@ -356,36 +367,6 @@ def popUpFiles(main_ui,context,pos):
                 # p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
                 p.wait()
 
-    # detectedFormats = []
-    # path = os.path.abspath(main_ui.currentFolder.text().strip())
-    # for format in imageFormats:
-    #     images = glob.glob(path.rstrip(os.sep) + os.sep + "*.%s" % format)
-    #     images.sort()
-    #     if images:
-    #         debug.info(images)
-    #         detectedFormats.append(format)
-    #         if len(detectedFormats)>=2:
-    #             debug.info("multiple formats detected")
-    #
-    #         else:
-    #             if selectedFiles:
-    #                 # action = menu.exec_(context.mapToGlobal(pos))
-    #                 if action == renameAction:
-    #                     debug.info("rename action")
-    #                     cmd = "python "+os.path.join(projDir, "src", "batch_rename.py")+" --path "+path
-    #                     debug.info(cmd)
-    #                     p = subprocess.Popen(cmd, shell=True)
-    #                     # p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    #                     p.wait()
-
-    # if selectedFiles:
-    #     if action == renameAction:
-    #         debug.info("rename")
-    #         cmd = "python "+os.path.join(projDir, "src", "batch_rename.py")+" --path /tmp/"
-    #         debug.info(cmd)
-    #         p = subprocess.Popen(cmd, shell=True)
-    #         # p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    #         p.wait()
 
 
 def messageBox(msg1, msg2="", icon=""):
@@ -411,7 +392,7 @@ def mainGui(main_ui):
     with open(qssFile, "r") as fh:
         main_ui.setStyleSheet(fh.read())
 
-
+    main_ui.currentFolder.clear()
     main_ui.currentFolder.setText(ROOTDIR)
 
     ROOTDIRNEW = os.path.abspath(main_ui.currentFolder.text().strip())
@@ -432,13 +413,16 @@ def mainGui(main_ui):
 
     prevDirIcon = QtGui.QPixmap(os.path.join(projDir, "imageFiles", "arrow-up-1.png"))
     goIcon = QtGui.QPixmap(os.path.join(projDir, "imageFiles", "arrow-right-1.png"))
+    copyIcon = QtGui.QPixmap(os.path.join(projDir, "imageFiles", "copy-icon-1.png"))
 
     main_ui.upButton.setIcon(QtGui.QIcon(prevDirIcon))
     main_ui.goButton.setIcon(QtGui.QIcon(goIcon))
+    main_ui.copyButton.setIcon(QtGui.QIcon(copyIcon))
 
   # main_ui.progressBar.setRange(0,100)
 
     main_ui.treeDirs.clicked.connect(lambda idnx, modelDirs=modelDirs, main_ui = main_ui : dirSelected(idnx, modelDirs, main_ui))
+    main_ui.copyButton.clicked.connect(lambda self, main_ui = main_ui : copyPath(self, main_ui))
     main_ui.goButton.clicked.connect(lambda self, main_ui = main_ui : changeDir(self, main_ui))
     main_ui.upButton.clicked.connect(lambda self, main_ui = main_ui : previousDir(self, main_ui))
     main_ui.convertButton.clicked.connect(lambda self, main_ui = main_ui : startConvert(self, main_ui))
@@ -447,12 +431,24 @@ def mainGui(main_ui):
     # main_ui.listFiles.clicked.connect(lambda idnx, main_ui = main_ui :filesSelected(modelFiles,main_ui))
     #
     main_ui.listFiles.customContextMenuRequested.connect(lambda pos, context = main_ui.listFiles.viewport(), main_ui = main_ui: popUpFiles(main_ui, context, pos))
+    main_ui.listFiles.doubleClicked.connect(lambda self, main_ui = main_ui : openFile(self, main_ui))
     # main_ui.tableFiles.customContextMenuRequested.connect(lambda pos, context = main_ui.tableFiles, main_ui = main_ui: popUpFiles(main_ui, context, pos))
     # main_ui.treeDirs.customContextMenuRequested.connect(lambda pos, main_ui = main_ui: popUpFolders(main_ui, pos))
     #
     # main_ui.checkDetails.clicked.connect(lambda click, main_ui=main_ui: toggleView(main_ui))
     # main_ui.checkDetails.setChecked(True)
     # toggleView(main_ui)
+
+    # clearIcon = QtGui.QPixmap(os.path.join(projDir, "imageFiles", "clear-icon-1.png"))
+    # clearButton = QtWidgets.QPushButton()
+    # clearButton.setIcon(QtGui.QIcon(clearIcon))
+    # layout = QtWidgets.QHBoxLayout()
+    # layout.addStretch()
+    # layout.addWidget(clearButton)
+    # layout.setSpacing(0)
+    # layout.setContentsMargins(0,0,0,0)
+    #
+    # main_ui.currentFolder.setLayout(layout)
 
     main_ui.show()
     main_ui.update()
