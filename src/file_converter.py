@@ -32,6 +32,7 @@ debug.info(main_ui_file)
 
 imageFormats = ['png','exr','PNG','EXR','jpg','JPEG']
 videoFormats = ['mov','mp4','MP4','avi','mkv']
+detectedFormats = []
 
 parser = argparse.ArgumentParser(description="Use the comand to open a sandboxed UI for folders in an Asset")
 parser.add_argument("-a","--asset",dest="asset",help="colon separated Asset path")
@@ -166,12 +167,14 @@ def setDir(ROOTDIRNEW, main_ui):
 
 def getDetails(ROOTDIRNEW, main_ui):
     path = os.path.abspath(ROOTDIRNEW)
+    global detectedFormats
+    del detectedFormats[:]
 
-    detectedFormats = []
     for format in imageFormats:
         images = glob.glob(path.rstrip(os.sep) + os.sep + "*.%s" %format)
         images.sort()
         if images:
+            # del detectedFormats[:]
             detectedFormats.append(format)
             # if "_" in name:
             startFrame = images[0].split("_")[-1].rstrip(".%s" %format)
@@ -197,9 +200,11 @@ def getDetails(ROOTDIRNEW, main_ui):
 
 
 def startConvert(self, main_ui):
+    global detectedFormats
     main_ui.progressBar.setValue(0)
     text = main_ui.outputFolder.text().strip()
-
+    if detectedFormats:
+        debug.info(detectedFormats)
     if text:
         debug.info(text)
         outputDir = os.path.abspath(os.path.expanduser(text))+"/"
@@ -211,9 +216,18 @@ def startConvert(self, main_ui):
             frames = str((int(endFrame.lstrip("0")) - int(startFrame.lstrip("0"))) + 1)
 
             outputFile = main_ui.fileName.text().strip()
-            inputFormat = main_ui.inputFormat.currentText().strip()
-            input = outputFile.split(".")[0] + "_%04d."+inputFormat
-
+            # inputFormat = main_ui.inputFormat.currentText().strip()
+            input = None
+            # input = outputFile.split(".")[0] + "_%04d."+inputFormat
+            if detectedFormats:
+                dirPath = os.path.abspath(main_ui.currentFolder.text().strip())
+                debug.info(detectedFormats)
+                format = detectedFormats[0]
+                images = glob.glob(dirPath.rstrip(os.sep) + os.sep + "*.%s" %format)
+                # debug.info(images)
+                input = "_".join(images[-1].split(".")[0].split("_")[:-1]) + "_%04d."+format
+                debug.info(input)
+                
             encoding = main_ui.encoding.currentText().strip()
             colorMode = main_ui.colorMode.currentText().strip()
             outputFormat = main_ui.outputFormat.currentText().strip()

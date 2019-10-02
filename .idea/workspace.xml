@@ -4,7 +4,6 @@
     <list default="true" id="5319dda6-a699-4894-8990-3974c98c901e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/file_converter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/file_converter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uiFiles/file_converter.ui" beforeDir="false" afterPath="$PROJECT_DIR$/uiFiles/file_converter.ui" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,7 +45,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="10139" />
+          <entry key="py" value="10359" />
           <entry key="qss" value="145" />
           <entry key="txt" value="53" />
           <entry key="yml" value="28" />
@@ -55,7 +54,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="198" />
-          <entry key="Python" value="10031" />
+          <entry key="Python" value="10251" />
           <entry key="Scratch" value="108" />
           <entry key="YAML" value="28" />
         </counts>
@@ -67,8 +66,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/convert_exr_mov_rle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="476">
+              <caret line="28" column="15" lean-forward="true" selection-start-line="28" selection-end-line="29" />
               <folding>
                 <element signature="e#133#143#0" expanded="true" />
               </folding>
@@ -88,45 +87,27 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/file_converter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
-              <caret line="474" lean-forward="true" selection-start-line="474" selection-end-line="474" />
+            <state relative-caret-position="513">
+              <caret line="229" column="16" selection-start-line="229" selection-start-column="16" selection-end-line="229" selection-end-column="16" />
               <folding>
                 <element signature="e#136#148#0" expanded="true" />
                 <element signature="e#7416#7434#0" />
                 <element signature="e#10301#10324#0" />
-                <marker date="1570006587513" expanded="true" signature="1555:1557" ph="..." />
-                <marker date="1570006587513" expanded="true" signature="1589:1594" ph="..." />
-                <marker date="1570006587513" expanded="true" signature="2350:2351" ph="..." />
-                <marker date="1570006587513" expanded="true" signature="2350:2354" ph="..." />
-                <marker date="1570006587513" expanded="true" signature="2384:2389" ph="..." />
-                <marker date="1570006587513" expanded="true" signature="3660:3782" ph="..." />
-                <marker date="1570006587513" expanded="true" signature="3813:4023" ph="..." />
-                <marker date="1570006587513" expanded="true" signature="4773:13539" ph="..." />
-                <marker date="1570006587513" expanded="true" signature="6115:11107" ph="..." />
-                <marker date="1570006587513" expanded="true" signature="11315:11317" ph="..." />
-                <marker date="1570006587513" expanded="true" signature="11781:12049" ph="..." />
+                <marker date="1570013244277" expanded="true" signature="1576:1578" ph="..." />
+                <marker date="1570013244277" expanded="true" signature="1610:1615" ph="..." />
+                <marker date="1570013244277" expanded="true" signature="2371:2372" ph="..." />
+                <marker date="1570013244277" expanded="true" signature="2371:2375" ph="..." />
+                <marker date="1570013244277" expanded="true" signature="2405:2410" ph="..." />
+                <marker date="1570013244277" expanded="true" signature="3681:3803" ph="..." />
+                <marker date="1570013244277" expanded="true" signature="3834:4044" ph="..." />
+                <marker date="1570013244277" expanded="true" signature="4794:14170" ph="..." />
+                <marker date="1570013244277" expanded="true" signature="6288:11738" ph="..." />
+                <marker date="1570013244277" expanded="true" signature="11946:11948" ph="..." />
+                <marker date="1570013244277" expanded="true" signature="12412:12680" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/styleSheet/stylesheetTest.qss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="514" column="27" selection-start-line="514" selection-start-column="22" selection-end-line="514" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -134,8 +115,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/batch_rename.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+            <state relative-caret-position="274">
+              <caret line="42" column="14" lean-forward="true" selection-start-line="42" selection-start-column="14" selection-end-line="42" selection-end-column="14" />
               <folding>
                 <element signature="e#136#148#0" expanded="true" />
                 <marker date="1569938162295" expanded="true" signature="1373:2000" ph="..." />
@@ -155,9 +136,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>FSM4Files</find>
-      <find>QCombo</find>
-      <find>QTreeView</find>
       <find>sort</find>
       <find>mov</find>
       <find>QFra</find>
@@ -177,14 +155,17 @@
       <find>rame</find>
       <find>Qtabwidget</find>
       <find>popUpFiles</find>
-      <find>currentFolder</find>
       <find>listFiles</find>
       <find>lineedit</find>
       <find>clear</find>
       <find>treeview</find>
       <find>lineEdit</find>
-      <find>button</find>
       <find>setText</find>
+      <find>images</find>
+      <find>input</find>
+      <find>button</find>
+      <find>detectedFormats</find>
+      <find>currentFolder</find>
     </findStrings>
     <replaceStrings>
       <replace>exr</replace>
@@ -206,6 +187,7 @@
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_5.py" />
         <option value="$PROJECT_DIR$/src/batch_rename.py" />
         <option value="$PROJECT_DIR$/styleSheet/stylesheetTest.qss" />
+        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/file_converter.py" />
       </list>
     </option>
@@ -480,7 +462,13 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file:///usr/lib64/python2.7/glob.py">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#34#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/convert_png_to_qtrle.py" />
     <entry file="file://$USER_HOME$/.PyCharmCE2018.2/system/python_stubs/-1247972723/PyQt5/QtWidgets/__init__/QGroupBox.py">
@@ -662,14 +650,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/batch_rename.py">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
-          <folding>
-            <element signature="e#136#148#0" expanded="true" />
-            <marker date="1569938162295" expanded="true" signature="1373:2000" ph="..." />
-          </folding>
+        <state relative-caret-position="34">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
@@ -680,10 +664,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/batch_rename.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="42" column="14" lean-forward="true" selection-start-line="42" selection-start-column="14" selection-end-line="42" selection-end-column="14" />
+          <folding>
+            <element signature="e#136#148#0" expanded="true" />
+            <marker date="1569938162295" expanded="true" signature="1373:2000" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/convert_exr_mov_rle.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="476">
+          <caret line="28" column="15" lean-forward="true" selection-start-line="28" selection-end-line="29" />
           <folding>
             <element signature="e#133#143#0" expanded="true" />
           </folding>
@@ -692,31 +687,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/file_converter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="474" lean-forward="true" selection-start-line="474" selection-end-line="474" />
+        <state relative-caret-position="513">
+          <caret line="229" column="16" selection-start-line="229" selection-start-column="16" selection-end-line="229" selection-end-column="16" />
           <folding>
             <element signature="e#136#148#0" expanded="true" />
             <element signature="e#7416#7434#0" />
             <element signature="e#10301#10324#0" />
-            <marker date="1570006587513" expanded="true" signature="1555:1557" ph="..." />
-            <marker date="1570006587513" expanded="true" signature="1589:1594" ph="..." />
-            <marker date="1570006587513" expanded="true" signature="2350:2351" ph="..." />
-            <marker date="1570006587513" expanded="true" signature="2350:2354" ph="..." />
-            <marker date="1570006587513" expanded="true" signature="2384:2389" ph="..." />
-            <marker date="1570006587513" expanded="true" signature="3660:3782" ph="..." />
-            <marker date="1570006587513" expanded="true" signature="3813:4023" ph="..." />
-            <marker date="1570006587513" expanded="true" signature="4773:13539" ph="..." />
-            <marker date="1570006587513" expanded="true" signature="6115:11107" ph="..." />
-            <marker date="1570006587513" expanded="true" signature="11315:11317" ph="..." />
-            <marker date="1570006587513" expanded="true" signature="11781:12049" ph="..." />
+            <marker date="1570013244277" expanded="true" signature="1576:1578" ph="..." />
+            <marker date="1570013244277" expanded="true" signature="1610:1615" ph="..." />
+            <marker date="1570013244277" expanded="true" signature="2371:2372" ph="..." />
+            <marker date="1570013244277" expanded="true" signature="2371:2375" ph="..." />
+            <marker date="1570013244277" expanded="true" signature="2405:2410" ph="..." />
+            <marker date="1570013244277" expanded="true" signature="3681:3803" ph="..." />
+            <marker date="1570013244277" expanded="true" signature="3834:4044" ph="..." />
+            <marker date="1570013244277" expanded="true" signature="4794:14170" ph="..." />
+            <marker date="1570013244277" expanded="true" signature="6288:11738" ph="..." />
+            <marker date="1570013244277" expanded="true" signature="11946:11948" ph="..." />
+            <marker date="1570013244277" expanded="true" signature="12412:12680" ph="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
