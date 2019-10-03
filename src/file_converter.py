@@ -362,6 +362,7 @@ def openFile(self, main_ui):
 def popUpFiles(main_ui,context,pos):
     menu = QtWidgets.QMenu()
     renameAction = menu.addAction("Batch Rename")
+    convertAction = menu.addAction("Convert Video")
 
     selectedFiles = getSelectedFiles(main_ui)
     debug.info(selectedFiles)
@@ -372,10 +373,20 @@ def popUpFiles(main_ui,context,pos):
     if selectedFiles:
         formatOfSelected = selectedFiles[0].split(".")[-1]
         debug.info(formatOfSelected)
+
         if formatOfSelected in imageFormats:
             if action == renameAction:
                 debug.info("rename action")
                 cmd = "python "+os.path.join(projDir, "src", "batch_rename.py")+" --path "+path+" --asset "+selectedFiles[0]
+                debug.info(cmd)
+                p = subprocess.Popen(cmd, shell=True)
+                # p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                p.wait()
+
+        if formatOfSelected in videoFormats:
+            if action == convertAction:
+                debug.info("convert action")
+                cmd = "python "+os.path.join(projDir, "src", "video_converter.py")+" --path "+path+" --asset "+selectedFiles[0]
                 debug.info(cmd)
                 p = subprocess.Popen(cmd, shell=True)
                 # p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -421,6 +432,7 @@ def mainGui(main_ui):
     main_ui.treeDirs.hideColumn(1)
     main_ui.treeDirs.hideColumn(2)
     main_ui.treeDirs.hideColumn(3)
+    main_ui.treeDirs.setHeaderHidden(True)
 
     rootIdx = modelDirs.index(ROOTDIRNEW)
     main_ui.treeDirs.setRootIndex(rootIdx)

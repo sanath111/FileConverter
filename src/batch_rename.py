@@ -10,8 +10,6 @@ import argparse
 import glob
 import os
 import sys
-import re
-import pexpect
 import setproctitle
 try:
     from PyQt5.QtWidgets import QApplication, QFileSystemModel, QListWidgetItem
