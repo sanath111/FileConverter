@@ -59,6 +59,10 @@ def convert(self,main_ui):
     container = main_ui.container.currentText().strip()
     size = main_ui.size.currentText().strip()
     newName = main_ui.output.text().strip()
+    if newName:
+        pass
+    else:
+        newName = videoName.split(".")[0]
     output = dirPath+"/"+newName+"."+container
 
     debug.info(input)
@@ -97,11 +101,10 @@ def convert(self,main_ui):
             p = subprocess.Popen(cmd, shell=True)
             # p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             p.wait()
-            poll = p.poll()
-            if poll == None:
-                debug.info("alive")
+            if p.wait() != 0:
+                raise ValueError("ffmpeg failed")
             else:
-                debug.info("dead")
+                debug.info("done")
                 messageBox("Conversion Complete", icon=os.path.join(projDir, "imageFiles", "info-icon-1.png"))
                 QApplication.quit()
 

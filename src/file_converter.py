@@ -311,7 +311,7 @@ def startConvert(self, main_ui):
 
                 debug.info(listOfI)
                 if (all(p == 2 for p in listOfI) and len(listOfI) > 0) == True:
-                    raise ValueError("Not available yet")
+                    raise ValueError("ffmpeg failed")
                 else:
                     cpCmd = "cp -v " + outputFile + " " + outputDir
                     os.system(cpCmd.rstrip())
@@ -441,9 +441,13 @@ def mainGui(main_ui):
     goIcon = QtGui.QPixmap(os.path.join(projDir, "imageFiles", "arrow-right-1.png"))
     copyIcon = QtGui.QPixmap(os.path.join(projDir, "imageFiles", "copy-icon-1.png"))
 
+    main_ui.copyButton.setIcon(QtGui.QIcon(copyIcon))
     main_ui.upButton.setIcon(QtGui.QIcon(prevDirIcon))
     main_ui.goButton.setIcon(QtGui.QIcon(goIcon))
-    main_ui.copyButton.setIcon(QtGui.QIcon(copyIcon))
+
+    main_ui.copyButton.setToolTip("Copy to output folder name")
+    main_ui.upButton.setToolTip("Previous Folder")
+    main_ui.goButton.setToolTip("Go to Folder")
 
   # main_ui.progressBar.setRange(0,100)
 
