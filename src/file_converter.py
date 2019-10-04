@@ -34,10 +34,10 @@ imageFormats = ['png','exr','PNG','EXR','jpg','JPEG']
 videoFormats = ['mov','mp4','MP4','avi','mkv']
 detectedFormats = []
 
-parser = argparse.ArgumentParser(description="Use the comand to open a sandboxed UI for folders in an Asset")
-parser.add_argument("-a","--asset",dest="asset",help="colon separated Asset path")
-parser.add_argument("-p","--path",dest="path",help="Absolute path of the asset on disk")
-parser.add_argument("-c","--close",dest="close",action="store_true",help="Close the app after opening a file")
+parser = argparse.ArgumentParser(description="File conversion utility")
+# parser.add_argument("-a","--asset",dest="asset",help="colon separated Asset path")
+parser.add_argument("-p","--path",dest="path",help="Absolute path of the folder containing image sequence or videos")
+# parser.add_argument("-c","--close",dest="close",action="store_true",help="Close the app after opening a file")
 args = parser.parse_args()
 
 
@@ -63,28 +63,11 @@ class FSM4Files(QFileSystemModel):
         super(FSM4Files, self).__init__(**kwargs)
 
 
-
-  # def data(self, index, role):
-  #   if (index.isValid()):
-  #     if(index.column() == 0):
-  #       if( role == QtCore.Qt.DecorationRole):
-  #         filePath = os.path.abspath(str(self.filePath(index)))
-  #         pathSelected = os.path.relpath(os.path.dirname(filePath), ROOTDIR)
-  #         fName = os.path.basename(filePath)
-  #         # fThumbz = os.path.join(thumbsDbDir, pathSelected, fName + ".png")
-  #         # if (os.path.exists(fThumbz)):
-  #           # rbhus.debug.info(fThumbz)
-  #           # pixmap = QtGui.QPixmap(fThumbz)
-  #           return pixmap.scaled(64, 64, QtCore.Qt.KeepAspectRatio)
-  #
-  #   return super(FSM4Files, self).data(index, role)
-
-
 class FSM(QFileSystemModel):
 
     def __init__(self,**kwargs):
       super(FSM, self).__init__(**kwargs)
-    # self.fileDets = None
+
 
 def dirSelected(idx, modelDirs, main_ui):
     global CUR_DIR_SELECTED
@@ -110,26 +93,11 @@ def dirSelected(idx, modelDirs, main_ui):
     getDetails(CUR_DIR_SELECTED, main_ui)
 
 
-
-# def getSelectedFiles(main_ui):
-#   files =[]
-#   if(main_ui.checkDetails.isChecked()):
-#     selectedIdxs = main_ui.tableFiles.selectionModel().selectedRows()
-#     modelFiles = main_ui.tableFiles.model()
-#     for selectedIdx in selectedIdxs:
-#       files.append(modelFiles.filePath(selectedIdx))
-#   else:
-#     selectedItems = main_ui.listFiles.selectedItems()
-#     for selectedItem in selectedItems:
-#       files.append(selectedItem.media.absPath)
-#
-#
-#   return(files)
-
 def copyPath(self, main_ui):
     path = main_ui.currentFolder.text().strip()
     main_ui.outputFolder.clear()
     main_ui.outputFolder.setText(path)
+
 
 def previousDir(self, main_ui):
     # debug.info("previous directory")
@@ -147,6 +115,7 @@ def changeDir(self, main_ui):
     # debug.info(home)
     debug.info (ROOTDIRNEW)
     setDir(ROOTDIRNEW, main_ui)
+
 
 def setDir(ROOTDIRNEW, main_ui):
     modelDirs = FSM()
@@ -393,7 +362,6 @@ def popUpFiles(main_ui,context,pos):
                 p.wait()
 
 
-
 def messageBox(msg1, msg2="", icon=""):
     msg = QtWidgets.QMessageBox()
     msg.setWindowTitle("Message")
@@ -449,7 +417,6 @@ def mainGui(main_ui):
     main_ui.upButton.setToolTip("Previous Folder")
     main_ui.goButton.setToolTip("Go to Folder")
 
-  # main_ui.progressBar.setRange(0,100)
 
     main_ui.treeDirs.clicked.connect(lambda idnx, modelDirs=modelDirs, main_ui = main_ui : dirSelected(idnx, modelDirs, main_ui))
     main_ui.copyButton.clicked.connect(lambda self, main_ui = main_ui : copyPath(self, main_ui))
@@ -461,27 +428,11 @@ def mainGui(main_ui):
 
     main_ui.listFiles.customContextMenuRequested.connect(lambda pos, context = main_ui.listFiles.viewport(), main_ui = main_ui: popUpFiles(main_ui, context, pos))
     main_ui.listFiles.doubleClicked.connect(lambda self, main_ui = main_ui : openFile(self, main_ui))
-    # main_ui.tableFiles.customContextMenuRequested.connect(lambda pos, context = main_ui.tableFiles, main_ui = main_ui: popUpFiles(main_ui, context, pos))
-    # main_ui.treeDirs.customContextMenuRequested.connect(lambda pos, main_ui = main_ui: popUpFolders(main_ui, pos))
-    #
-    # main_ui.checkDetails.clicked.connect(lambda click, main_ui=main_ui: toggleView(main_ui))
-    # main_ui.checkDetails.setChecked(True)
-    # toggleView(main_ui)
 
-    # clearIcon = QtGui.QPixmap(os.path.join(projDir, "imageFiles", "clear-icon-1.png"))
-    # clearButton = QtWidgets.QPushButton()
-    # clearButton.setIcon(QtGui.QIcon(clearIcon))
-    # layout = QtWidgets.QHBoxLayout()
-    # layout.addStretch()
-    # layout.addWidget(clearButton)
-    # layout.setSpacing(0)
-    # layout.setContentsMargins(0,0,0,0)
-    #
-    # main_ui.currentFolder.setLayout(layout)
 
     main_ui.show()
     main_ui.update()
-    # dirSelected(curRootIdx, modelDirs, main_ui)
+
 
     qtRectangle = main_ui.frameGeometry()
     centerPoint = QtWidgets.QDesktopWidget().availableGeometry().center()
@@ -501,3 +452,4 @@ def mainfunc():
 if __name__ == '__main__':
     setproctitle.setproctitle("FILE_CONVERTER")
     mainfunc()
+

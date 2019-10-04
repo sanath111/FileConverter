@@ -31,16 +31,15 @@ debug.info(main_ui_file)
 imageFormats = ['png','exr','PNG','EXR','jpg','JPEG']
 videoFormats = ['mov','mp4','MP4','avi','mkv']
 
-parser = argparse.ArgumentParser(description="Use the comand to open a sandboxed UI for folders in an Asset")
-parser.add_argument("-a","--asset",dest="asset",help="colon separated Asset path")
-parser.add_argument("-p","--path",dest="path",help="Absolute path of the asset on disk")
-parser.add_argument("-c","--close",dest="close",action="store_true",help="Close the app after opening a file")
+parser = argparse.ArgumentParser(description="Utility to convert video")
+parser.add_argument("-a","--asset",dest="asset",help="Name of video file")
+parser.add_argument("-p","--path",dest="path",help="Absolute path of the folder containing videos")
+# parser.add_argument("-c","--close",dest="close",action="store_true",help="Close the app after opening a file")
 args = parser.parse_args()
 
 app = None
-assPath = args.path
 
-if(args.path):
+if (args.path) and (args.asset):
     dirPath = args.path
     videoName = args.asset
 else:
@@ -132,7 +131,7 @@ def messageBox(msg1, msg2="", icon=""):
 
 
 def mainGui(main_ui):
-    main_ui.setWindowTitle(assPath)
+    main_ui.setWindowTitle("Video Converter")
 
     qssFile = os.path.join(projDir, "styleSheet", "stylesheetTest.qss")
     with open(qssFile, "r") as fh:
@@ -157,7 +156,6 @@ def mainfunc():
     sys.exit(app.exec_())
 
 if __name__ == '__main__':
-    setproctitle.setproctitle("BATCH_RENAME")
+    setproctitle.setproctitle("VIDEO_CONVERTER")
     mainfunc()
-
 

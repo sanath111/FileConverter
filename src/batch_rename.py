@@ -29,16 +29,15 @@ debug.info(main_ui_file)
 imageFormats = ['png','exr','PNG','EXR','jpg','JPEG']
 videoFormats = ['mov','mp4','MP4','avi','mkv']
 
-parser = argparse.ArgumentParser(description="Use the comand to open a sandboxed UI for folders in an Asset")
-parser.add_argument("-a","--asset",dest="asset",help="colon separated Asset path")
-parser.add_argument("-p","--path",dest="path",help="Absolute path of the asset on disk")
-parser.add_argument("-c","--close",dest="close",action="store_true",help="Close the app after opening a file")
+parser = argparse.ArgumentParser(description="Utility to rename batch files")
+parser.add_argument("-a","--asset",dest="asset",help="Name of the file")
+parser.add_argument("-p","--path",dest="path",help="Absolute path of the folder containing files")
+# parser.add_argument("-c","--close",dest="close",action="store_true",help="Close the app after opening a file")
 args = parser.parse_args()
 
 app = None
-assPath = args.path
 
-if(args.path):
+if (args.path) and (args.asset):
     dirPath = args.path
     imageName = args.asset
 else:
@@ -64,10 +63,8 @@ def rename(self,main_ui):
         dst = newName + str("%04d" % i) + "." + format
         src = image
         dst = dirPath+"/"+dst
-        print(src)
-        print(dst)
-        # rename() function will
-        # rename all the files
+        debug.info(src)
+        debug.info(dst)
         os.rename(src, dst)
         i += 1
 
@@ -75,7 +72,7 @@ def rename(self,main_ui):
 
 
 def mainGui(main_ui):
-    main_ui.setWindowTitle(assPath)
+    main_ui.setWindowTitle("Batch Rename")
 
     qssFile = os.path.join(projDir, "styleSheet", "stylesheetTest.qss")
     with open(qssFile, "r") as fh:
