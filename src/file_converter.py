@@ -33,6 +33,8 @@ debug.info(main_ui_file)
 imageFormats = ['png','exr','PNG','EXR','jpg','JPEG']
 videoFormats = ['mov','mp4','MP4','avi','mkv']
 detectedFormats = []
+frameNums = []
+missingFrames = []
 
 parser = argparse.ArgumentParser(description="File conversion utility")
 # parser.add_argument("-a","--asset",dest="asset",help="colon separated Asset path")
@@ -137,13 +139,32 @@ def setDir(ROOTDIRNEW, main_ui):
 def getDetails(ROOTDIRNEW, main_ui):
     path = os.path.abspath(ROOTDIRNEW)
     global detectedFormats
+    global frameNums
+    global missingFrames
     del detectedFormats[:]
+    del frameNums[:]
+    del missingFrames[:]
 
     for format in imageFormats:
         images = glob.glob(path.rstrip(os.sep) + os.sep + "*.%s" %format)
         images.sort()
         if images:
+            debug.info(len(images))
+            # frameNums = []
+            # if len(images)>1:
+            for n in range(0,len(images)):
+                frameNum = images[n].split("_")[-1].rstrip(".%s" %format)
+                frameNums.append(int(frameNum))
             # del detectedFormats[:]
+            frameNums.sort()
+            debug.info(frameNums)
+
+            for x in range(frameNums[0], frameNums[-1] + 1):
+                if x not in frameNums:
+                    missingFrames.append(x)
+            missingFrames.sort()
+            debug.info(missingFrames)
+
             detectedFormats.append(format)
             # if "_" in name:
             startFrame = images[0].split("_")[-1].rstrip(".%s" %format)
@@ -174,133 +195,105 @@ def startConvert(self, main_ui):
     text = main_ui.outputFolder.text().strip()
     if detectedFormats:
         debug.info(detectedFormats)
-    if text:
-        debug.info(text)
-        outputDir = os.path.abspath(os.path.expanduser(text))+"/"
-        if os.path.exists(outputDir):
-            debug.info(outputDir)
-
-            startFrame = "%04d" %int(main_ui.startFrame.text().strip())
-            endFrame = main_ui.endFrame.text().strip()
-            frames = str((int(endFrame.lstrip("0")) - int(startFrame.lstrip("0"))) + 1)
-
-            outputFile = main_ui.fileName.text().strip()
-            # inputFormat = main_ui.inputFormat.currentText().strip()
-            input = None
-            # input = outputFile.split(".")[0] + "_%04d."+inputFormat
-            if detectedFormats:
-                dirPath = os.path.abspath(main_ui.currentFolder.text().strip())
-                debug.info(detectedFormats)
-                format = detectedFormats[0]
-                images = glob.glob(dirPath.rstrip(os.sep) + os.sep + "*.%s" %format)
-                # debug.info(images)
-                input = "_".join(images[-1].split(".")[0].split("_")[:-1]) + "_%04d."+format
-                debug.info(input)
-
-            encoding = main_ui.encoding.currentText().strip()
-            colorMode = main_ui.colorMode.currentText().strip()
-            outputFormat = main_ui.outputFormat.currentText().strip()
-
-            ffmpeg = None
-            if (os.path.exists("/opt/lib/ffmpeg/bin/ffmpeg")):
-                ffmpeg = "/opt/lib/ffmpeg/bin/ffmpeg"
-            else:
-                debug.info("Not found : /opt/lib/ffmpeg/bin/ffmpeg")
-                ffmpeg = "ffmpeg"
-
-            if outputFormat == "mp4":
-                cmd = ffmpeg +" -probesize 50000000 -apply_trc iec61966_2_1 -r 24 -start_number "+\
-                      str(startFrame) +" -i "+ input +" -vframes "+frames+" -pix_fmt "+colorMode+" -qscale:v 1 -y "+ outputFile
-            else:
-                cmd = ffmpeg +" -probesize 50000000 -apply_trc iec61966_2_1 -r 24 -start_number "+\
-                      str(startFrame) +" -i "+ input +" -vframes "+frames+" -c:v "+encoding+" -pix_fmt "+colorMode+" -qscale:v 1 -y "+ outputFile
-
-            debug.info (cmd)
-            try:
-          # run_command(cmd)
-          # times = {}
-          # startTime = int(round(time.time() * 1000))
-          # times["st"] = startTime
-          # p = subprocess.Popen(cmd, shell=True)
-          # # p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-          # # out, err = p.communicate()
-          # # debug.info(err)
-          # # p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-          # # p = subprocess.Popen(shlex.split(cmd), stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
-          # # ffmpeg_output, _ = p.communicate()
-          # # print(ffmpeg_output)
-          # # p.wait()
-          # main_ui.progressBar.setRange(int(startFrame.lstrip("0")), int(endFrame.lstrip("0")))
-          # count = 0
-          # while count < int(endFrame.lstrip("0")):
-          #   # debug.info(count)
-          #   count += 1
-          #   time.sleep(0.04)
-          #   main_ui.progressBar.setValue(count)
-          #
-          # p.wait()
-          # poll = p.poll()
-          # if poll == None:
-          #   debug.info("alive")
-          #
-          # else:
-          #   debug.info("dead")
-          # endTime = int(round(time.time() * 1000))
-          # times["et"] = endTime
-          # info = resource.getrusage(resource.RUSAGE_CHILDREN)
-          # debug.info(info)
-                main_ui.progressBar.setRange(int(startFrame.lstrip("0")), int(endFrame.lstrip("0")))
-
-                thread = pexpect.spawn(cmd)
-
-                cpl = thread.compile_pattern_list([pexpect.EOF,"frame= *\d+",'(.+)'])
-
-                listOfI = []
-                while True:
-                    i = thread.expect_list(cpl, timeout=None)
-
-                    if i == 0:  # EOF
-                        debug.info("the sub process exited")
-                        break
-
-                    elif i == 1:
-                        # if i not in listOfI:
-                        listOfI.append(i)
-                        frame_number = thread.match.group(0)
-                        temp = re.findall(r'\d+', frame_number)
-                        res = list(map(int, temp))
-                        debug.info(res[0])
-
-                        main_ui.progressBar.setValue(int(res[0]))
-
-                    elif i == 2:
-                        # if i not in listOfI:
-                        listOfI.append(i)
-                        pass
-
-                debug.info(listOfI)
-                if (all(p == 2 for p in listOfI) and len(listOfI) > 0) == True:
-                    raise ValueError("ffmpeg failed")
-                else:
-                    cpCmd = "cp -v " + outputFile + " " + outputDir
-                    os.system(cpCmd.rstrip())
-                    messageBox("Conversion Complete",icon=os.path.join(projDir, "imageFiles", "info-icon-1.png"))
-                thread.close()
-
-          # if p.returncode != 0:
-          #     raise NameError
-          # else:
-          #     cpCmd = "cp -v " + outputFile + " " + outputDir
-          #     os.system(cpCmd.rstrip())
-          #     messageBox("Conversion Complete",icon=os.path.join(projDir, "imageFiles", "info-icon-1.png"))
-
-            except:
-                debug.info(str(sys.exc_info()))
-                messageBox("Failed, Feature coming soon",icon=os.path.join(projDir, "imageFiles", "coming-soon-icon-1.png"))
-        else:
-            messageBox("No such Path",icon=os.path.join(projDir, "imageFiles", "error-icon-1.png"))
+    if missingFrames:
+        missingfrms = ','.join(map(str, missingFrames))
+        messageBox("missing frames:",missingfrms,icon=os.path.join(projDir, "imageFiles", "error-icon-1.png"))
     else:
-        messageBox("Specify Output Directory",icon=os.path.join(projDir, "imageFiles", "error-icon-1.png"))
+        if text:
+            debug.info(text)
+            outputDir = os.path.abspath(os.path.expanduser(text))+"/"
+            if os.path.exists(outputDir):
+                debug.info(outputDir)
+
+                try:
+                    startFrame = "%04d" %int(main_ui.startFrame.text().strip())
+                    endFrame = "%04d" %int(main_ui.endFrame.text().strip())
+                    frames = str((int(endFrame.lstrip("0")) - int(startFrame.lstrip("0"))) + 1)
+                    if int(frames)<=0:
+                        # messageBox("End frame can't be less than start frame",icon=os.path.join(projDir, "imageFiles", "error-icon-1.png"))
+                        raise ValueError("End frame can't be less than start frame")
+                    else:
+                        outputFile = main_ui.fileName.text().strip()
+                        # inputFormat = main_ui.inputFormat.currentText().strip()
+                        input = None
+                        # input = outputFile.split(".")[0] + "_%04d."+inputFormat
+                        if detectedFormats:
+                            dirPath = os.path.abspath(main_ui.currentFolder.text().strip())
+                            debug.info(detectedFormats)
+                            format = detectedFormats[0]
+                            images = glob.glob(dirPath.rstrip(os.sep) + os.sep + "*.%s" %format)
+                            # debug.info(images)
+                            input = "_".join(images[-1].split(".")[0].split("_")[:-1]) + "_%04d."+format
+                            debug.info(input)
+
+                        encoding = main_ui.encoding.currentText().strip()
+                        colorMode = main_ui.colorMode.currentText().strip()
+                        outputFormat = main_ui.outputFormat.currentText().strip()
+
+                        ffmpeg = None
+                        if (os.path.exists("/opt/lib/ffmpeg/bin/ffmpeg")):
+                            ffmpeg = "/opt/lib/ffmpeg/bin/ffmpeg"
+                        else:
+                            debug.info("Not found : /opt/lib/ffmpeg/bin/ffmpeg")
+                            ffmpeg = "ffmpeg"
+
+                        if outputFormat == "mp4":
+                            cmd = ffmpeg +" -probesize 50000000 -apply_trc iec61966_2_1 -r 24 -start_number "+\
+                                  str(startFrame) +" -i "+ input +" -vframes "+frames+" -pix_fmt "+colorMode+" -qscale:v 1 -y "+ outputFile
+                        else:
+                            cmd = ffmpeg +" -probesize 50000000 -apply_trc iec61966_2_1 -r 24 -start_number "+\
+                                  str(startFrame) +" -i "+ input +" -vframes "+frames+" -c:v "+encoding+" -pix_fmt "+colorMode+" -qscale:v 1 -y "+ outputFile
+
+                        debug.info (cmd)
+                        try:
+                            main_ui.progressBar.setRange(1, int(frames))
+
+                            thread = pexpect.spawn(cmd)
+
+                            cpl = thread.compile_pattern_list([pexpect.EOF,"frame= *\d+",'(.+)'])
+
+                            listOfI = []
+                            while True:
+                                i = thread.expect_list(cpl, timeout=None)
+
+                                if i == 0:  # EOF
+                                    debug.info("the sub process exited")
+                                    break
+
+                                elif i == 1:
+                                    # if i not in listOfI:
+                                    listOfI.append(i)
+                                    frame_number = thread.match.group(0)
+                                    temp = re.findall(r'\d+', frame_number)
+                                    res = list(map(int, temp))
+                                    debug.info(res[0])
+
+                                    main_ui.progressBar.setValue(int(res[0]))
+
+                                elif i == 2:
+                                    # if i not in listOfI:
+                                    listOfI.append(i)
+                                    pass
+
+                            debug.info(listOfI)
+                            if (all(p == 2 for p in listOfI) and len(listOfI) > 0) == True:
+                                raise ValueError("ffmpeg failed")
+                            else:
+                                cpCmd = "cp -v " + outputFile + " " + outputDir
+                                os.system(cpCmd.rstrip())
+                                messageBox("Conversion Complete",icon=os.path.join(projDir, "imageFiles", "info-icon-1.png"))
+                            thread.close()
+
+                        except:
+                            debug.info(str(sys.exc_info()[1]))
+                            messageBox(str(sys.exc_info()[1]),icon=os.path.join(projDir, "imageFiles", "coming-soon-icon-1.png"))
+                except:
+                    debug.info(str(sys.exc_info()[1]))
+                    messageBox(str(sys.exc_info()[1]),icon=os.path.join(projDir, "imageFiles", "error-icon-1.png"))
+            else:
+                messageBox("No such Path",icon=os.path.join(projDir, "imageFiles", "error-icon-1.png"))
+        else:
+            messageBox("Specify Output Directory",icon=os.path.join(projDir, "imageFiles", "error-icon-1.png"))
 
 
 def changeFormat(self, main_ui):
