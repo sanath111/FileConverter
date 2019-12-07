@@ -154,16 +154,21 @@ def getDetails(ROOTDIRNEW, main_ui):
             # if len(images)>1:
             for n in range(0,len(images)):
                 frameNum = images[n].split("_")[-1].rstrip(".%s" %format)
-                frameNums.append(int(frameNum))
+                # debug.info(frameNum)
+                try:
+                    frameNums.append(int(frameNum))
+                except:
+                    pass
             # del detectedFormats[:]
             frameNums.sort()
-            debug.info(frameNums)
+            # debug.info(frameNums)
 
-            for x in range(frameNums[0], frameNums[-1] + 1):
-                if x not in frameNums:
-                    missingFrames.append(x)
-            missingFrames.sort()
-            debug.info(missingFrames)
+            if frameNums:
+                for x in range(frameNums[0], frameNums[-1] + 1):
+                    if x not in frameNums:
+                        missingFrames.append(x)
+                missingFrames.sort()
+                debug.info(missingFrames)
 
             detectedFormats.append(format)
             # if "_" in name:
@@ -223,7 +228,7 @@ def startConvert(self, main_ui):
                             format = detectedFormats[0]
                             images = glob.glob(dirPath.rstrip(os.sep) + os.sep + "*.%s" %format)
                             # debug.info(images)
-                            input = "_".join(images[-1].split(".")[0].split("_")[:-1]) + "_%04d."+format
+                            input = "_".join(".".join(images[-1].split(".")[:-1]).split("_")[:-1]) + "_%04d."+format
                             debug.info(input)
 
                         encoding = main_ui.encoding.currentText().strip()
