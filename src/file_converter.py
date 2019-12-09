@@ -180,8 +180,7 @@ def getDetails(ROOTDIRNEW, main_ui):
             #   startFrame = str(res)
             endFrame = images[-1].split("_")[-1].rstrip(".%s" %format)
             # debug.info(startFrame+endFrame)
-            mov = "_".join(images[-1].split(".")[0].split("_")[:-1]) + ".mov"
-
+            mov = "_".join(".".join(images[-1].split(".")[:-1]).split("_")[:-1]) + ".mov"
             main_ui.fileName.clear()
             main_ui.startFrame.clear()
             main_ui.endFrame.clear()
