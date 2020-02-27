@@ -254,6 +254,8 @@ def startConvert(self, main_ui):
 
                             thread = pexpect.spawn(cmd)
 
+                            thread.logfile = open("/tmp/fileConverterLog.txt", "w")
+
                             cpl = thread.compile_pattern_list([pexpect.EOF,"frame= *\d+",'(.+)'])
 
                             listOfI = []
