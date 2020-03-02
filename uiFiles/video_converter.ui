@@ -92,12 +92,12 @@
      </property>
      <item>
       <property name="text">
-       <string>mp4</string>
+       <string>mov</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>mov</string>
+       <string>mp4</string>
       </property>
      </item>
     </widget>

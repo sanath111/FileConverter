@@ -25,6 +25,8 @@ except:
 projDir = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2])
 sys.path.append(projDir)
 
+srcDir = os.path.join(projDir,"src")
+
 main_ui_file = os.path.join(projDir, "uiFiles", "video_converter.ui")
 debug.info(main_ui_file)
 
@@ -70,13 +72,13 @@ def convert(self,main_ui):
     debug.info(output)
 
     cmd = None
-    ffmpeg = None
-    if (os.path.exists("/opt/lib/ffmpeg/bin/ffmpeg")):
-        ffmpeg = "/opt/lib/ffmpeg/bin/ffmpeg"
-    else:
-        debug.info("Not found : /opt/lib/ffmpeg/bin/ffmpeg")
-        ffmpeg = "ffmpeg"
-
+    # ffmpeg = None
+    # if (os.path.exists("/opt/lib/ffmpeg/bin/ffmpeg")):
+    #     ffmpeg = "/opt/lib/ffmpeg/bin/ffmpeg"
+    # else:
+    #     debug.info("Not found : /opt/lib/ffmpeg/bin/ffmpeg")
+    #     ffmpeg = "ffmpeg"
+    ffmpeg = srcDir + os.sep + "ffmpeg"
     if size == "low":
         cmd = ffmpeg+" -probesize 5000000 -i "+input+" -c:a copy -c:v prores_ks -profile:v 3 -vendor ap10 -pix_fmt yuv422p10le -qscale:v 10 -y "+output
     if size == "same":

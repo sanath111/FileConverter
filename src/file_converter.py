@@ -14,6 +14,7 @@ import re
 import pexpect
 import setproctitle
 import subprocess
+import pyperclip
 
 try:
     from PyQt5.QtWidgets import QApplication, QFileSystemModel, QListWidgetItem
@@ -26,6 +27,15 @@ except:
 
 projDir = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2])
 sys.path.append(projDir)
+
+srcDir = os.path.join(projDir,"src")
+toolsDir = os.path.join(projDir, "tools")
+debug.info(toolsDir)
+
+if os.path.exists(toolsDir+os.sep+"ffmpeg"):
+    debug.info("ffmpeg exists")
+else:
+    os.system("cd "+toolsDir+"; unzip "+toolsDir+os.sep+"ffmpeg.zip; cd -")
 
 main_ui_file = os.path.join(projDir, "uiFiles", "file_converter.ui")
 debug.info(main_ui_file)
@@ -97,8 +107,16 @@ def dirSelected(idx, modelDirs, main_ui):
 
 def copyPath(self, main_ui):
     path = main_ui.currentFolder.text().strip()
-    main_ui.outputFolder.clear()
-    main_ui.outputFolder.setText(path)
+    # main_ui.outputFolder.clear()
+    # main_ui.outputFolder.setText(path)
+    pyperclip.copy(path)
+
+
+def pastePath(self, main_ui):
+    path = pyperclip.paste()
+    debug.info(path)
+    main_ui.currentFolder.clear()
+    main_ui.currentFolder.setText(path.strip())
 
 
 def previousDir(self, main_ui):
@@ -116,7 +134,9 @@ def changeDir(self, main_ui):
     # home = os.path.expanduser(ROOTDIR)
     # debug.info(home)
     debug.info (ROOTDIRNEW)
-    setDir(ROOTDIRNEW, main_ui)
+
+    if os.path.exists(ROOTDIRNEW):
+        setDir(ROOTDIRNEW, main_ui)
 
 
 def setDir(ROOTDIRNEW, main_ui):
@@ -180,14 +200,17 @@ def getDetails(ROOTDIRNEW, main_ui):
             #   startFrame = str(res)
             endFrame = images[-1].split("_")[-1].rstrip(".%s" %format)
             # debug.info(startFrame+endFrame)
-            mov = "_".join(".".join(images[-1].split(".")[:-1]).split("_")[:-1]) + ".mov"
+            outputFormat = main_ui.outputFormat.currentText().strip()
+            mov = "_".join(".".join(images[-1].split(".")[:-1]).split("_")[:-1]) + "." + outputFormat
             main_ui.fileName.clear()
             main_ui.startFrame.clear()
             main_ui.endFrame.clear()
+            main_ui.outputFolder.clear()
 
             main_ui.fileName.setText(mov)
             main_ui.startFrame.setText(startFrame)
             main_ui.endFrame.setText(endFrame)
+            main_ui.outputFolder.setText(path)
     # inputFileFmt = "_".join(exrs[-1].split(".")[0].split("_")[:-1]) + "_" + startFrame + "-" + endFrame + ".exr"
     main_ui.inputFormat.clear()
     main_ui.inputFormat.addItems(detectedFormats)
@@ -218,7 +241,6 @@ def startConvert(self, main_ui):
                         raise ValueError("End frame can't be less than start frame")
                     else:
                         outputFile = main_ui.fileName.text().strip()
-                        # inputFormat = main_ui.inputFormat.currentText().strip()
                         input = None
                         # input = outputFile.split(".")[0] + "_%04d."+inputFormat
                         if detectedFormats:
@@ -232,21 +254,33 @@ def startConvert(self, main_ui):
 
                         encoding = main_ui.encoding.currentText().strip()
                         colorMode = main_ui.colorMode.currentText().strip()
+                        inputFormat = main_ui.inputFormat.currentText().strip()
                         outputFormat = main_ui.outputFormat.currentText().strip()
 
-                        ffmpeg = None
-                        if (os.path.exists("/opt/lib/ffmpeg/bin/ffmpeg")):
-                            ffmpeg = "/opt/lib/ffmpeg/bin/ffmpeg"
-                        else:
-                            debug.info("Not found : /opt/lib/ffmpeg/bin/ffmpeg")
-                            ffmpeg = "ffmpeg"
+                        # ffmpeg = None
+                        # if (os.path.exists("/opt/lib/ffmpeg/bin/ffmpeg")):
+                        #     ffmpeg = "/opt/lib/ffmpeg/bin/ffmpeg"
+                        # else:
+                        #     debug.info("Not found : /opt/lib/ffmpeg/bin/ffmpeg")
+                        #     ffmpeg = "ffmpeg"
+                        ffmpeg = ""
+                        if os.path.exists(toolsDir + os.sep + "ffmpeg"):
+                            ffmpeg = toolsDir + os.sep + "ffmpeg"
+                        debug.info(ffmpeg)
 
+                        Encoding = encoding
                         if outputFormat == "mp4":
-                            cmd = ffmpeg +" -probesize 50000000 -apply_trc iec61966_2_1 -r 24 -start_number "+\
-                                  str(startFrame) +" -i "+ input +" -vframes "+frames+" -pix_fmt "+colorMode+" -qscale:v 1 -y "+ outputFile
-                        else:
-                            cmd = ffmpeg +" -probesize 50000000 -apply_trc iec61966_2_1 -r 24 -start_number "+\
-                                  str(startFrame) +" -i "+ input +" -vframes "+frames+" -c:v "+encoding+" -pix_fmt "+colorMode+" -qscale:v 1 -y "+ outputFile
+                            if inputFormat == "exr":
+                                Encoding = "h264"
+                            else:
+                                Encoding = "copy"
+                        if outputFormat == "mov":
+                            Encoding = encoding
+                        #     cmd = ffmpeg +" -probesize 50000000 -apply_trc iec61966_2_1 -r 24 -start_number "+\
+                        #           str(startFrame) +" -i "+ input +" -vframes "+frames+" -c:v copy -pix_fmt "+colorMode+" -qscale:v 1 -y "+ outputFile
+                        # else:
+                        cmd = ffmpeg +" -probesize 50000000 -apply_trc iec61966_2_1 -r 24 -start_number "+\
+                              str(startFrame) +" -i "+ input +" -vframes "+frames+" -c:v "+Encoding+" -pix_fmt "+colorMode+" -qscale:v 1 -y "+ outputFile
 
                         debug.info (cmd)
                         try:
@@ -286,6 +320,7 @@ def startConvert(self, main_ui):
                                 raise ValueError("ffmpeg failed")
                             else:
                                 cpCmd = "cp -v " + outputFile + " " + outputDir
+                                debug.info(cpCmd)
                                 os.system(cpCmd.rstrip())
                                 messageBox("Conversion Complete",icon=os.path.join(projDir, "imageFiles", "info-icon-1.png"))
                             thread.close()
@@ -322,7 +357,16 @@ def openFile(self, main_ui):
     debug.info("double clicked!!!")
     selectedFiles = getSelectedFiles(main_ui)
     path = os.path.abspath(main_ui.currentFolder.text().strip())
-    openCmd = "xdg-open "+path+"/"+selectedFiles[0]
+    selectedFilePath = path+os.sep+selectedFiles[0]
+
+    formatOfSelected = selectedFiles[0].split(".")[-1]
+    debug.info(formatOfSelected)
+    openCmd = " "
+    if formatOfSelected in imageFormats:
+        openCmd = "gwenview " + selectedFilePath
+    if formatOfSelected in videoFormats:
+        openCmd = "mpv " + selectedFilePath
+    # openCmd = "xdg-open "+selectedFilePath
     debug.info(openCmd)
     subprocess.Popen(openCmd, shell=True)
 
@@ -407,18 +451,22 @@ def mainGui(main_ui):
     prevDirIcon = QtGui.QPixmap(os.path.join(projDir, "imageFiles", "arrow-up-1.png"))
     goIcon = QtGui.QPixmap(os.path.join(projDir, "imageFiles", "arrow-right-1.png"))
     copyIcon = QtGui.QPixmap(os.path.join(projDir, "imageFiles", "copy-icon-1.png"))
+    pasteIcon = QtGui.QPixmap(os.path.join(projDir, "imageFiles", "paste-icon-1.png"))
 
     main_ui.copyButton.setIcon(QtGui.QIcon(copyIcon))
+    main_ui.pasteButton.setIcon(QtGui.QIcon(pasteIcon))
     main_ui.upButton.setIcon(QtGui.QIcon(prevDirIcon))
     main_ui.goButton.setIcon(QtGui.QIcon(goIcon))
 
-    main_ui.copyButton.setToolTip("Copy to output folder name")
+    main_ui.copyButton.setToolTip("Copy to Clipboard")
+    main_ui.pasteButton.setToolTip("Paste from Clipboard")
     main_ui.upButton.setToolTip("Previous Folder")
     main_ui.goButton.setToolTip("Go to Folder")
 
 
     main_ui.treeDirs.clicked.connect(lambda idnx, modelDirs=modelDirs, main_ui = main_ui : dirSelected(idnx, modelDirs, main_ui))
     main_ui.copyButton.clicked.connect(lambda self, main_ui = main_ui : copyPath(self, main_ui))
+    main_ui.pasteButton.clicked.connect(lambda self, main_ui = main_ui : pastePath(self, main_ui))
     main_ui.goButton.clicked.connect(lambda self, main_ui = main_ui : changeDir(self, main_ui))
     main_ui.upButton.clicked.connect(lambda self, main_ui = main_ui : previousDir(self, main_ui))
     main_ui.convertButton.clicked.connect(lambda self, main_ui = main_ui : startConvert(self, main_ui))
