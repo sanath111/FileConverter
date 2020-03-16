@@ -339,7 +339,8 @@ def startConvert(self, main_ui):
 
 def changeFormat(self, main_ui):
     format = main_ui.outputFormat.currentText().strip()
-    filename = main_ui.fileName.text().strip().split(".")[0] + "."+format
+    # filename = main_ui.fileName.text().strip().split(".")[0] + "."+format
+    filename = ".".join(main_ui.fileName.text().strip().split(".")[:-1]) + "." + format
     main_ui.fileName.clear()
     main_ui.fileName.setText(filename)
 
