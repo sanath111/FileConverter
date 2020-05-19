@@ -23,8 +23,10 @@ import debug
 # projDir = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2])
 # sys.path.append(projDir)
 
-cmd = "python " + srcDir + os.sep +"file_converter.py"
+# cmd = "python " + srcDir + os.sep + "file_converter.py"
+cmd = "cd " + projDir + os.sep + "bin; python " + srcDir + os.sep + "file_converter.py; cd - "
 debug.info(cmd)
 os.system(cmd)
+# os.system("cd -")
 # with open(tempDir+"/fileConverterLog.txt", "w") as output:
 #     subprocess.call(["python", srcDir+"/file_converter.py"], stderr=output)

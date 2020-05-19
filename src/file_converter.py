@@ -15,6 +15,8 @@ import pexpect
 import setproctitle
 import subprocess
 import pyperclip
+import time
+import threading
 
 try:
     from PyQt5.QtWidgets import QApplication, QFileSystemModel, QListWidgetItem
@@ -81,6 +83,40 @@ class FSM(QFileSystemModel):
       super(FSM, self).__init__(**kwargs)
 
 
+# class CustomMessageBox(QtWidgets.QMessageBox):
+#
+#     def __init__(self, *__args):
+#         QtWidgets.QMessageBox.__init__(self)
+#         self.timeout = 0
+#         self.autoclose = False
+#         self.currentTime = 0
+#         # qssFile = os.path.join(projDir, "styleSheet", "stylesheetTest.qss")
+#         # with open(qssFile, "r") as sty:
+#         #     self.setStyleSheet(sty.read())
+#
+#     def showEvent(self, QShowEvent):
+#         self.currentTime = 0
+#         if self.autoclose:
+#             self.startTimer(1000)
+#
+#     def timerEvent(self, *args, **kwargs):
+#         self.currentTime += 1
+#         if self.currentTime >= self.timeout:
+#             debug.info("done")
+#             self.done(0)
+#
+#     @staticmethod
+#     def showWithTimeout(timeoutSeconds, message, title, icon=QtWidgets.QMessageBox.Information, buttons=QtWidgets.QMessageBox.Ok):
+#         w = CustomMessageBox()
+#         w.autoclose = True
+#         w.timeout = timeoutSeconds
+#         w.setText(message)
+#         w.setWindowTitle(title)
+#         w.setIcon(icon)
+#         w.setStandardButtons(buttons)
+#         w.exec_()
+
+
 def dirSelected(idx, modelDirs, main_ui):
     global CUR_DIR_SELECTED
 
@@ -103,6 +139,8 @@ def dirSelected(idx, modelDirs, main_ui):
     main_ui.listFiles.setRootIndex(rootIdx)
 
     getDetails(CUR_DIR_SELECTED, main_ui)
+
+    main_ui.messages.setText("Click Convert to start")
 
 
 def copyPath(self, main_ui):
@@ -137,6 +175,7 @@ def changeDir(self, main_ui):
 
     if os.path.exists(ROOTDIRNEW):
         setDir(ROOTDIRNEW, main_ui)
+    # CustomMessageBox.showWithTimeout(3, "Auto close in 3 seconds", "QMessageBox with autoclose", icon=QtWidgets.QMessageBox.Warning)
 
 
 def setDir(ROOTDIRNEW, main_ui):
@@ -251,6 +290,8 @@ def startConvert(self, main_ui):
                             # debug.info(images)
                             input = "_".join(".".join(images[-1].split(".")[:-1]).split("_")[:-1]) + "_%04d."+format
                             debug.info(input)
+                            if input == "_%04d."+format:
+                                raise ValueError("Invalid File Name")
 
                         encoding = main_ui.encoding.currentText().strip()
                         colorMode = main_ui.colorMode.currentText().strip()
@@ -308,6 +349,8 @@ def startConvert(self, main_ui):
                                     res = list(map(int, temp))
                                     debug.info(res[0])
 
+                                    main_ui.messages.hide()
+                                    main_ui.progressBar.show()
                                     main_ui.progressBar.setValue(int(res[0]))
 
                                 elif i == 2:
@@ -322,19 +365,33 @@ def startConvert(self, main_ui):
                                 cpCmd = "cp -v " + outputFile + " " + outputDir
                                 debug.info(cpCmd)
                                 os.system(cpCmd.rstrip())
-                                messageBox("Conversion Complete",icon=os.path.join(projDir, "imageFiles", "info-icon-1.png"))
+                                main_ui.messages.show()
+                                main_ui.messages.setText("Conversion complete")
+                                # messageBox("Conversion Complete",icon=os.path.join(projDir, "imageFiles", "info-icon-1.png"))
                             thread.close()
+                            main_ui.progressBar.hide()
 
                         except:
                             debug.info(str(sys.exc_info()[1]))
-                            messageBox(str(sys.exc_info()[1]),icon=os.path.join(projDir, "imageFiles", "coming-soon-icon-1.png"))
+                            main_ui.messages.show()
+                            main_ui.messages.setText("ffmpeg failed")
+                            # messageBox(str(sys.exc_info()[1]),icon=os.path.join(projDir, "imageFiles", "coming-soon-icon-1.png"))
                 except:
-                    debug.info(str(sys.exc_info()[1]))
-                    messageBox(str(sys.exc_info()[1]),icon=os.path.join(projDir, "imageFiles", "error-icon-1.png"))
+                    err = str(sys.exc_info()[1])
+                    debug.info(err)
+                    if "invalid literal for int()" in err:
+                        main_ui.messages.setText("Error! Check start and end frames")
+                    if "End frame can't be less than start frame" in err:
+                        main_ui.messages.setText("Error! Check start and end frames")
+                    if "Invalid File Name" in err:
+                        main_ui.messages.setText("Invalid File Name, Try Renaming")
+                    # messageBox(str(sys.exc_info()[1]),icon=os.path.join(projDir, "imageFiles", "error-icon-1.png"))
             else:
-                messageBox("No such Path",icon=os.path.join(projDir, "imageFiles", "error-icon-1.png"))
+                main_ui.messages.setText("Output folder doesn't exist")
+                # messageBox("No such Path",icon=os.path.join(projDir, "imageFiles", "error-icon-1.png"))
         else:
-            messageBox("Specify Output Directory",icon=os.path.join(projDir, "imageFiles", "error-icon-1.png"))
+            main_ui.messages.setText("Specify output folder")
+            # messageBox("Specify Output Directory",icon=os.path.join(projDir, "imageFiles", "error-icon-1.png"))
 
 
 def changeFormat(self, main_ui):
@@ -477,6 +534,8 @@ def mainGui(main_ui):
     main_ui.listFiles.customContextMenuRequested.connect(lambda pos, context = main_ui.listFiles.viewport(), main_ui = main_ui: popUpFiles(main_ui, context, pos))
     main_ui.listFiles.doubleClicked.connect(lambda self, main_ui = main_ui : openFile(self, main_ui))
 
+    main_ui.progressBar.hide()
+    main_ui.messages.setText("Click Convert to start")
 
     main_ui.show()
     main_ui.update()
