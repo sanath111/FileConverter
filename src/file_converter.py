@@ -140,7 +140,9 @@ def dirSelected(idx, modelDirs, main_ui):
 
     getDetails(CUR_DIR_SELECTED, main_ui)
 
-    main_ui.messages.setText("Click Convert to start")
+    messages(main_ui,"green","Click Convert to start")
+    # main_ui.messages.setStyleSheet("color: green")
+    # main_ui.messages.setText("Click Convert to start")
 
 
 def copyPath(self, main_ui):
@@ -152,31 +154,42 @@ def copyPath(self, main_ui):
 
 def pastePath(self, main_ui):
     path = pyperclip.paste()
-    debug.info(path)
-    main_ui.currentFolder.clear()
-    main_ui.currentFolder.setText(path.strip())
+    if path != None:
+        debug.info(path)
+        main_ui.currentFolder.clear()
+        main_ui.currentFolder.setText(path.strip())
+    else:
+        pass
 
 
 def previousDir(self, main_ui):
     # debug.info("previous directory")
     ROOTDIR = main_ui.currentFolder.text().strip()
-    ROOTDIRNEW = os.sep.join(ROOTDIR.split(os.sep)[:-1])
-    debug.info(ROOTDIRNEW)
-
-    setDir(ROOTDIRNEW, main_ui)
-
+    if ROOTDIR != "":
+        if os.path.exists(ROOTDIR):
+            ROOTDIRNEW = os.sep.join(ROOTDIR.split(os.sep)[:-1])
+            debug.info(ROOTDIRNEW)
+            if os.path.exists(ROOTDIRNEW):
+                setDir(ROOTDIRNEW, main_ui)
+    else:
+        pass
 
 def changeDir(self, main_ui):
     ROOTDIR = main_ui.currentFolder.text().strip()
-    ROOTDIRNEW = os.path.abspath(os.path.expanduser(ROOTDIR))
-    # home = os.path.expanduser(ROOTDIR)
-    # debug.info(home)
-    debug.info (ROOTDIRNEW)
-
-    if os.path.exists(ROOTDIRNEW):
-        setDir(ROOTDIRNEW, main_ui)
-    # CustomMessageBox.showWithTimeout(3, "Auto close in 3 seconds", "QMessageBox with autoclose", icon=QtWidgets.QMessageBox.Warning)
-
+    if ROOTDIR != "":
+        ROOTDIRNEW = os.path.abspath(os.path.expanduser(ROOTDIR))
+        # home = os.path.expanduser(ROOTDIR)
+        # debug.info(home)
+        if os.path.exists(ROOTDIRNEW):
+            debug.info (ROOTDIRNEW)
+            setDir(ROOTDIRNEW, main_ui)
+        else:
+            messages(main_ui,"red","No such folder")
+            # main_ui.messages.setStyleSheet("color: red")
+            # main_ui.messages.setText("No such folder")
+        # CustomMessageBox.showWithTimeout(3, "Auto close in 3 seconds", "QMessageBox with autoclose", icon=QtWidgets.QMessageBox.Warning)
+    else:
+        pass
 
 def setDir(ROOTDIRNEW, main_ui):
     modelDirs = FSM()
@@ -263,7 +276,11 @@ def startConvert(self, main_ui):
         debug.info(detectedFormats)
     if missingFrames:
         missingfrms = ','.join(map(str, missingFrames))
-        messageBox("missing frames:",missingfrms,icon=os.path.join(projDir, "imageFiles", "error-icon-1.png"))
+        ertxt = "Missing frames: "+ missingfrms
+        messages(main_ui,"red",ertxt)
+        # main_ui.messages.setStyleSheet("color: red")
+        # main_ui.messages.setText("Missing frames: "+missingfrms)
+        # messageBox("missing frames:",missingfrms,icon=os.path.join(projDir, "imageFiles", "error-icon-1.png"))
     else:
         if text:
             debug.info(text)
@@ -366,31 +383,44 @@ def startConvert(self, main_ui):
                                 debug.info(cpCmd)
                                 os.system(cpCmd.rstrip())
                                 main_ui.messages.show()
-                                main_ui.messages.setText("Conversion complete")
+                                messages(main_ui,"orange","Conversion complete")
+                                # main_ui.messages.setStyleSheet("color: orange")
+                                # main_ui.messages.setText("Conversion complete")
                                 # messageBox("Conversion Complete",icon=os.path.join(projDir, "imageFiles", "info-icon-1.png"))
                             thread.close()
                             main_ui.progressBar.hide()
 
                         except:
                             debug.info(str(sys.exc_info()[1]))
+                            main_ui.progressBar.hide()
                             main_ui.messages.show()
-                            main_ui.messages.setText("ffmpeg failed")
+                            messages(main_ui,"red","ffmpeg failed")
+                            # main_ui.messages.setStyleSheet("color: red")
+                            # main_ui.messages.setText("ffmpeg failed")
                             # messageBox(str(sys.exc_info()[1]),icon=os.path.join(projDir, "imageFiles", "coming-soon-icon-1.png"))
                 except:
                     err = str(sys.exc_info()[1])
                     debug.info(err)
+                    # main_ui.messages.setStyleSheet("color: red")
                     if "invalid literal for int()" in err:
-                        main_ui.messages.setText("Error! Check start and end frames")
+                        messages(main_ui, "red", "Error! Check start and end frames")
+                        # main_ui.messages.setText("Error! Check start and end frames")
                     if "End frame can't be less than start frame" in err:
-                        main_ui.messages.setText("Error! Check start and end frames")
+                        messages(main_ui, "red", "Error! Check start and end frames")
+                        # main_ui.messages.setText("Error! Check start and end frames")
                     if "Invalid File Name" in err:
-                        main_ui.messages.setText("Invalid File Name, Try Renaming")
+                        messages(main_ui, "red", "Invalid File Name, Try Renaming")
+                        # main_ui.messages.setText("Invalid File Name, Try Renaming")
                     # messageBox(str(sys.exc_info()[1]),icon=os.path.join(projDir, "imageFiles", "error-icon-1.png"))
             else:
-                main_ui.messages.setText("Output folder doesn't exist")
+                messages(main_ui, "red", "Output folder doesn't exist")
+                # main_ui.messages.setStyleSheet("color: red")
+                # main_ui.messages.setText("Output folder doesn't exist")
                 # messageBox("No such Path",icon=os.path.join(projDir, "imageFiles", "error-icon-1.png"))
         else:
-            main_ui.messages.setText("Specify output folder")
+            messages(main_ui, "red", "Specify output folder")
+            # main_ui.messages.setStyleSheet("color: red")
+            # main_ui.messages.setText("Specify output folder")
             # messageBox("Specify Output Directory",icon=os.path.join(projDir, "imageFiles", "error-icon-1.png"))
 
 
@@ -461,6 +491,12 @@ def popUpFiles(main_ui,context,pos):
                 p = subprocess.Popen(cmd, shell=True)
                 # p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
                 p.wait()
+
+
+def messages(main_ui,color,msg):
+    main_ui.messages.setStyleSheet("color: %s" %color)
+    main_ui.messages.setText("%s"%msg)
+
 
 
 def messageBox(msg1, msg2="", icon=""):
@@ -535,7 +571,10 @@ def mainGui(main_ui):
     main_ui.listFiles.doubleClicked.connect(lambda self, main_ui = main_ui : openFile(self, main_ui))
 
     main_ui.progressBar.hide()
-    main_ui.messages.setText("Click Convert to start")
+    # self.label_1.setStyleSheet("background-color: lightgreen")
+    messages(main_ui,"green","Click Convert to start")
+    # main_ui.messages.setStyleSheet("color: green")
+    # main_ui.messages.setText("Click Convert to start")
 
     main_ui.show()
     main_ui.update()

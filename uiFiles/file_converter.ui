@@ -393,8 +393,14 @@
    </item>
    <item row="3" column="1">
     <widget class="QLabel" name="messages">
+     <property name="font">
+      <font/>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
      <property name="text">
-      <string>TextLabel</string>
+      <string>messages</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
