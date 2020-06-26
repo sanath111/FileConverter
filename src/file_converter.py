@@ -254,6 +254,15 @@ def getDetails(ROOTDIRNEW, main_ui):
             # debug.info(startFrame+endFrame)
             outputFormat = main_ui.outputFormat.currentText().strip()
             mov = "_".join(".".join(images[-1].split(".")[:-1]).split("_")[:-1]) + "." + outputFormat
+
+            projPath = (os.sep).join(path.split(os.sep)[0:5])
+            debug.info(projPath)
+            movsPath = path
+            if os.path.exists(projPath):
+                a = os.path.join(projPath,"output","Movs")
+                if os.path.exists(a):
+                    movsPath = a
+
             main_ui.fileName.clear()
             main_ui.startFrame.clear()
             main_ui.endFrame.clear()
@@ -262,7 +271,7 @@ def getDetails(ROOTDIRNEW, main_ui):
             main_ui.fileName.setText(mov)
             main_ui.startFrame.setText(startFrame)
             main_ui.endFrame.setText(endFrame)
-            main_ui.outputFolder.setText(path)
+            main_ui.outputFolder.setText(movsPath)
     # inputFileFmt = "_".join(exrs[-1].split(".")[0].split("_")[:-1]) + "_" + startFrame + "-" + endFrame + ".exr"
     main_ui.inputFormat.clear()
     main_ui.inputFormat.addItems(detectedFormats)
