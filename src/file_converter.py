@@ -346,7 +346,7 @@ def startConvert(self, main_ui):
                         #     cmd = ffmpeg +" -probesize 50000000 -apply_trc iec61966_2_1 -r 24 -start_number "+\
                         #           str(startFrame) +" -i "+ input +" -vframes "+frames+" -c:v copy -pix_fmt "+colorMode+" -qscale:v 1 -y "+ outputFile
                         # else:
-                        cmd = ffmpeg +" -probesize 50000000 -apply_trc iec61966_2_1 -r 24 -start_number "+\
+                        cmd = ffmpeg +" -probesize 50000000 -apply_trc iec61966_2_1 -r 25 -start_number "+\
                               str(startFrame) +" -i "+ input +" -vframes "+frames+" -c:v "+Encoding+" -pix_fmt "+colorMode+" -qscale:v 1 -y "+ outputFile
 
                         debug.info (cmd)
