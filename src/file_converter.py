@@ -566,6 +566,7 @@ def mainGui(main_ui):
     main_ui.upButton.setToolTip("Previous Folder")
     main_ui.goButton.setToolTip("Go to Folder")
 
+    main_ui.goButton.setShortcut(QtGui.QKeySequence("Return"))
 
     main_ui.treeDirs.clicked.connect(lambda idnx, modelDirs=modelDirs, main_ui = main_ui : dirSelected(idnx, modelDirs, main_ui))
     main_ui.copyButton.clicked.connect(lambda self, main_ui = main_ui : copyPath(self, main_ui))
